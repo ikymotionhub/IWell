@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0e100c">
+<title>Caravan · Ishka Center — Aparcadero ecológico en Cali</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Anton&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=block" rel="stylesheet">
+<style>
+:root{
+  --bg:#0e100c; --bg2:#14170f; --surface:#171b12; --surface2:#1f241a; --card:#191d14;
+  --line:rgba(201,162,75,.16); --line2:rgba(242,239,230,.09);
+  --text:#f3efe4; --muted:#a7a894; --faint:#767a68;
+  --gold:#c9a24b; --gold-lite:#e7cd8a; --gold-deep:#a67c2e; --sage:#8aa678;
+  --shadow:0 24px 60px -20px rgba(0,0,0,.6);
+}
+[data-theme="light"]{
+  --bg:#f6f2e8; --bg2:#efe8d8; --surface:#fffdf6; --surface2:#f2ecdc; --card:#fffdf6;
+  --line:rgba(166,124,46,.24); --line2:rgba(20,23,15,.09);
+  --text:#20241a; --muted:#5f6353; --faint:#8b8e7d;
+  --gold:#a97e28; --gold-lite:#c9a24b; --gold-deep:#87611c; --sage:#5e7a4d;
+  --shadow:0 22px 50px -22px rgba(60,50,20,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif;line-height:1.6;overflow-x:hidden;transition:background .5s ease,color .5s ease}
+img{display:block;max-width:100%}
+a{color:var(--gold);text-decoration:none;transition:color .2s}
+a:hover{color:var(--gold-lite)}
+button{font-family:inherit}
+.ico{font-family:'Material Symbols Outlined';font-weight:normal;font-style:normal;line-height:1;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;-webkit-font-smoothing:antialiased;font-feature-settings:'liga';-webkit-font-feature-settings:'liga'}
+::selection{background:var(--gold);color:#1a1405}
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--gold-deep);border-radius:6px;border:3px solid var(--bg2)}
+[data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+[data-reveal].in{opacity:1;transform:none}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+@keyframes slideUp{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.gold-text{background:linear-gradient(100deg,var(--gold-deep),var(--gold-lite) 45%,var(--gold) 70%,var(--gold-lite));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto}
+input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(.6) sepia(1) saturate(4) hue-rotate(5deg)}
+.wz-scroll::-webkit-scrollbar{width:8px}
+@media(max-width:860px){ .hide-mobile{display:none!important} }
+@media(min-width:861px){ .only-mobile{display:none!important} }
+@keyframes ctaPulse{0%,100%{box-shadow:0 8px 20px -6px rgba(201,162,75,.55)}50%{box-shadow:0 12px 30px -3px rgba(201,162,75,.9)}}
+@media(max-width:760px){#reviewGrid{display:flex!important;grid-template-columns:1fr!important;gap:16px!important;padding:2px 2px 10px}#reviewGrid>div{flex:0 0 84%!important}#reviewHead{grid-template-columns:1fr!important;text-align:center;gap:20px!important}#reviewHead .rh-chips{justify-content:center!important}#videoRow{grid-template-columns:1fr!important;display:flex!important;gap:16px;padding:2px 2px 10px}#videoRow>div{flex:0 0 82%!important}#featWrap{grid-template-columns:1fr!important;gap:30px!important}#featImg{aspect-ratio:1/1!important}#footGrid{grid-template-columns:1fr!important;gap:26px!important;text-align:left}#footGrid .foot-social{justify-content:flex-start!important}#hostRow{grid-template-columns:1fr!important}#aboutRow{grid-template-columns:1fr!important;gap:24px!important}#aboutRow .about-media{order:-1}#galleryGrid{display:flex!important;grid-auto-rows:auto!important;gap:14px;padding:2px 2px 10px}#galleryGrid>figure{flex:0 0 80%!important;grid-column:auto!important;grid-row:auto!important;height:300px!important}#mapRow{grid-template-columns:1fr!important;gap:22px!important;text-align:left}#mapRow .map-info{align-items:flex-start}#mapRow .map-embed{order:-1}}
+#galleryGrid,#videoRow,#amenGrid,#reviewGrid{scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+#galleryGrid::-webkit-scrollbar,#videoRow::-webkit-scrollbar,#amenGrid::-webkit-scrollbar,#reviewGrid::-webkit-scrollbar{height:0;width:0;display:none}
+#galleryGrid>figure,#videoRow>div,#amenGrid>*,#reviewGrid>div{scroll-snap-align:center}
+.only-mobile-flex{display:none}
+@media(max-width:760px){.only-mobile-flex{display:inline-flex!important}}
+@keyframes pulseDot{0%{box-shadow:0 0 0 0 rgba(143,191,106,.7)}70%{box-shadow:0 0 0 10px rgba(143,191,106,0)}100%{box-shadow:0 0 0 0 rgba(143,191,106,0)}}
+@keyframes shimmerSweep{0%{transform:translateX(-140%)}55%,100%{transform:translateX(260%)}}
+.cta-shimmer{position:relative;overflow:hidden}.cta-shimmer::after{content:"";position:absolute;top:0;left:0;width:38%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);transform:translateX(-140%);animation:shimmerSweep 3.6s ease-in-out infinite;pointer-events:none}
+@media(max-width:760px){#accGrid{grid-template-columns:1fr!important;gap:20px!important}#accGrid>article{flex-direction:column!important}#accGrid .acc-media{width:100%!important;aspect-ratio:16/10!important}#accGrid .acc-body{padding:20px!important}#espacio .about-feats{grid-template-columns:1fr!important}}
+#nav nav a:hover{background:var(--surface)}
+.cta-lg,.js-book{white-space:nowrap}
+@keyframes swipeNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(7px)}}
+@keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(231,205,138,.5)}70%{box-shadow:0 0 0 11px rgba(231,205,138,0)}100%{box-shadow:0 0 0 0 rgba(231,205,138,0)}}
+@keyframes tapNudge{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+.tap-nudge{display:inline-block;animation:tapNudge 1.3s ease-in-out infinite}
+@media print{@page{margin:10mm}body *{visibility:hidden!important}#ticketCard,#ticketCard *{visibility:visible!important}#ticketCard{position:fixed!important;left:50%!important;top:14px!important;transform:translateX(-50%)!important;margin:0!important;box-shadow:none!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+.swipe-ico{display:inline-block;animation:swipeNudge 1.6s ease-in-out infinite}
+@media(max-width:760px){.cta-lg{width:100%!important;justify-content:center!important}}
+@media(max-width:600px){#navRow{gap:10px!important;padding:12px 16px!important}#navActions{gap:7px!important}#mobileMenu{max-height:calc(100svh - 68px);overflow-y:auto}}
+@media(max-width:600px){#wzOuter{padding:0!important;align-items:stretch!important}#wzPanel{max-width:none!important;max-height:none!important;height:100svh!important;border-radius:0!important}#wzBody{padding:22px 18px!important}}
+body.wz-locked{position:fixed;left:0;right:0;width:100%;overflow:hidden}
+#app{overflow-x:hidden}
+</style>
+</helmet>
+<div id="app" data-theme="dark" style="position:relative;min-height:100vh">
+
+<!-- ===================== NAV ===================== -->
+<header id="nav" style="position:fixed;top:0;left:0;right:0;z-index:200;transition:background .35s,border-color .35s,backdrop-filter .35s;border-bottom:1px solid transparent">
+  <div id="navRow" style="max-width:1280px;margin:0 auto;padding:16px 22px;display:flex;align-items:center;gap:22px">
+    <a href="#top" style="display:flex;align-items:center;gap:11px;color:var(--text)">
+      <span style="width:40px;height:40px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold-lite),var(--gold-deep));color:#1a1405;flex:none"><span class="ico" style="font-size:24px">airport_shuttle</span></span>
+      <span style="display:flex;flex-direction:column;line-height:1.05">
+        <span style="font:700 16px/1 Manrope;letter-spacing:.14em">ISHKA</span>
+        <span style="font:500 11px/1.2 Manrope;letter-spacing:.34em;color:var(--gold)">CARAVAN</span>
+      </span>
+    </a>
+    <nav class="hide-mobile" style="display:flex;gap:4px;margin-left:14px">
+      <a href="#espacio" style="color:var(--muted);padding:9px 13px;border-radius:9px;font:600 14px Manrope" data-en="The place">El lugar</a>
+      <a href="#espacios" style="color:var(--muted);padding:9px 13px;border-radius:9px;font:600 14px Manrope" data-en="Spaces">Espacios</a>
+      <a href="#servicios" style="color:var(--muted);padding:9px 13px;border-radius:9px;font:600 14px Manrope" data-en="Amenities">Servicios</a>
+      <a href="#resenas" style="color:var(--muted);padding:9px 13px;border-radius:9px;font:600 14px Manrope" data-en="Reviews">Reseñas</a>
+      <a href="#ubicacion" style="color:var(--muted);padding:9px 13px;border-radius:9px;font:600 14px Manrope" data-en="Location">Ubicación</a>
+    </nav>
+    <div id="navActions" style="margin-left:auto;display:flex;align-items:center;gap:10px">
+      <button id="langBtn" aria-label="Idioma" style="display:flex;align-items:center;gap:6px;height:42px;padding:0 13px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--text);cursor:pointer;font:700 13px Manrope;letter-spacing:.03em"><span class="ico" style="font-size:18px;color:var(--gold)">language</span><span id="langLabel">ES</span></button>
+      <button id="themeBtn" aria-label="Tema" style="width:42px;height:42px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--gold);cursor:pointer;display:grid;place-items:center"><span class="ico" id="themeIcon" style="font-size:20px">dark_mode</span></button>
+      <button class="js-book hide-mobile" style="display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 22px;border-radius:999px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--gold-lite),var(--gold));color:#1a1405;font:700 14px Manrope;letter-spacing:.02em;box-shadow:0 8px 26px -6px rgba(201,162,75,.5)" data-en="Book now">Reservar</button>
+      <button id="menuBtn" class="only-mobile" aria-label="Menú" style="width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:transparent;color:var(--text);display:grid;place-items:center"><span class="ico" style="font-size:24px">menu</span></button>
+    </div>
+  </div>
+  <div id="mobileMenu" style="display:none;padding:8px 22px 20px;border-top:1px solid var(--line);background:var(--bg)">
+    <a href="#espacio" class="js-mclose" style="display:block;color:var(--text);padding:13px 4px;font:600 16px Manrope;border-bottom:1px solid var(--line2)" data-en="The place">El lugar</a>
+    <a href="#espacios" class="js-mclose" style="display:block;color:var(--text);padding:13px 4px;font:600 16px Manrope;border-bottom:1px solid var(--line2)" data-en="Spaces">Espacios</a>
+    <a href="#servicios" class="js-mclose" style="display:block;color:var(--text);padding:13px 4px;font:600 16px Manrope;border-bottom:1px solid var(--line2)" data-en="Amenities">Servicios</a>
+    <a href="#resenas" class="js-mclose" style="display:block;color:var(--text);padding:13px 4px;font:600 16px Manrope;border-bottom:1px solid var(--line2)" data-en="Reviews">Reseñas</a>
+    <a href="#ubicacion" class="js-mclose" style="display:block;color:var(--text);padding:13px 4px;font:600 16px Manrope;border-bottom:1px solid var(--line2)" data-en="Location">Ubicación</a>
+    <button class="js-book" style="margin-top:16px;width:100%;height:52px;border-radius:999px;border:none;background:linear-gradient(135deg,var(--gold-lite),var(--gold));color:#1a1405;font:700 16px Manrope;cursor:pointer" data-en="Book your spot">Reservar tu puesto</button>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section id="top" style="position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden">
+  <img src="assets/van-tent-jungle.avif" alt="Camper con carpa de techo entre la selva de Ishka Center, Cali" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center">
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,9,5,.9) 0%,rgba(7,9,5,.55) 34%,rgba(7,9,5,.74) 66%,var(--bg) 99%)"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(80% 55% at 84% 12%,rgba(231,205,138,.34),transparent 60%),radial-gradient(70% 55% at 8% 92%,rgba(166,124,46,.24),transparent 62%)"></div>
+  <div style="position:absolute;inset:0;box-shadow:inset 0 0 220px 50px rgba(0,0,0,.4)"></div>
+  <div style="position:relative;z-index:3;max-width:1280px;margin:0 auto;width:100%;padding:120px 22px 46px">
+    <div style="max-width:820px">
+      <span data-reveal style="display:inline-flex;align-items:center;gap:9px;padding:9px 16px;border-radius:999px;border:1px solid rgba(231,205,138,.4);background:rgba(14,16,12,.4);backdrop-filter:blur(8px);color:var(--gold-lite);font:600 13px Manrope;letter-spacing:.06em;margin-bottom:26px"><span class="ico" style="font-size:17px">eco</span><span data-en="Eco parking · motorhome & caravan · Cali">Aparcadero ecológico · motorhome & caravan · Cali</span></span>
+      <h1 data-reveal style="font-family:'Cormorant Garamond',serif;font-weight:600;color:#fff;font-size:clamp(44px,7.2vw,86px);line-height:.98;letter-spacing:-.01em;text-shadow:0 2px 40px rgba(0,0,0,.5)">
+        <span data-en="Your home on wheels,">Tu hogar sobre ruedas,</span><br><span class="gold-text" data-en="in the heart of Cali.">en el corazón de Cali.</span>
+      </h1>
+      <p data-reveal style="margin-top:22px;font-size:clamp(17px,1.8vw,22px);color:#e9e6da;max-width:540px;text-shadow:0 1px 20px rgba(0,0,0,.5)" data-en="Water, showers, kitchen and wifi among fruit trees. Wake up to birdsong, 20 min from Cali.">Agua, duchas, cocina y wifi entre árboles frutales. Despierta con el canto de los pájaros, a 20 min de Cali.</p>
+      <div data-reveal style="margin-top:26px;display:flex;flex-wrap:wrap;gap:22px;align-items:center">
+        <div style="display:flex;align-items:center;gap:8px"><span class="ico" style="color:var(--gold);font-size:22px">star</span><span style="color:#fff;font:800 17px Manrope">4.84</span><span style="color:#d8d5c8;font:500 14px Manrope" data-en="· 447 reviews on Airbnb">· 447 reseñas en Airbnb</span></div>
+        <div style="width:1px;height:22px;background:rgba(255,255,255,.25)" class="hide-mobile"></div>
+        <div style="display:flex;align-items:center;gap:8px"><span class="ico" style="color:var(--gold);font-size:22px">workspace_premium</span><span style="color:#fff;font:800 17px Manrope">5.0</span><span style="color:#d8d5c8;font:500 14px Manrope" data-en="· 701 reviews on Google">· 701 reseñas en Google</span></div>
+      </div>
+      <div data-reveal style="margin-top:22px;display:inline-flex;align-items:center;gap:10px;padding:9px 16px;border-radius:999px;border:1px solid rgba(122,155,90,.5);background:rgba(122,155,90,.14);backdrop-filter:blur(8px)"><span style="width:9px;height:9px;border-radius:50%;background:#8fbf6a;animation:pulseDot 1.8s infinite"></span><span style="color:#dfeccb;font:700 13px Manrope;letter-spacing:.01em" data-en="Only 10 spots · high demand this week">Solo 10 puestos · alta demanda esta semana</span></div>
+    </div>
+
+    <!-- booking bar -->
+    <div data-reveal style="margin-top:40px;background:rgba(23,27,18,.62);border:1px solid rgba(231,205,138,.28);backdrop-filter:blur(18px);border-radius:22px;padding:14px;display:flex;flex-wrap:wrap;gap:10px;align-items:stretch;box-shadow:var(--shadow);max-width:920px">
+      <button class="js-book" style="flex:1;min-width:150px;text-align:left;background:rgba(231,205,138,.07);border:none;cursor:pointer;padding:12px 16px;border-radius:14px;color:var(--text);animation:pulseRing 2.6s ease-in-out infinite" style-hover="background:rgba(255,255,255,.05)">
+        <span style="display:block;font:700 11px Manrope;letter-spacing:.12em;color:var(--gold)" data-en="CHECK-IN">LLEGADA</span>
+        <span style="display:block;margin-top:4px;font:600 15px Manrope;color:#e9e6da" data-en="Add date">Agregar fecha</span>
+      </button>
+      <div style="width:1px;background:var(--line);margin:8px 0" class="hide-mobile"></div>
+      <button class="js-book" style="flex:1;min-width:150px;text-align:left;background:transparent;border:none;cursor:pointer;padding:12px 16px;border-radius:14px;color:var(--text)" style-hover="background:rgba(255,255,255,.05)">
+        <span style="display:block;font:700 11px Manrope;letter-spacing:.12em;color:var(--gold)" data-en="CHECK-OUT">SALIDA</span>
+        <span style="display:block;margin-top:4px;font:600 15px Manrope;color:#e9e6da" data-en="Add date">Agregar fecha</span>
+      </button>
+      <div style="width:1px;background:var(--line);margin:8px 0" class="hide-mobile"></div>
+      <button class="js-book" style="flex:1;min-width:150px;text-align:left;background:transparent;border:none;cursor:pointer;padding:12px 16px;border-radius:14px;color:var(--text)" style-hover="background:rgba(255,255,255,.05)">
+        <span style="display:block;font:700 11px Manrope;letter-spacing:.12em;color:var(--gold)" data-en="TRAVELERS">VIAJEROS</span>
+        <span style="display:block;margin-top:4px;font:600 15px Manrope;color:#e9e6da" data-en="1 traveler">1 viajero</span>
+      </button>
+      <button class="js-book cta-shimmer" style="flex:none;display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:0 26px;min-height:58px;border-radius:16px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--gold-lite),var(--gold));color:#1a1405;font:800 16px Manrope;letter-spacing:.01em;box-shadow:0 10px 30px -8px rgba(201,162,75,.6)"><span class="ico" style="font-size:22px">search</span><span data-en="Check availability">Comprobar disponibilidad</span></button>
+    </div>
+    <p data-reveal style="margin-top:13px;color:#f4d97b;font:700 13px Manrope;display:inline-flex;align-items:center;gap:8px"><span class="ico tap-nudge" style="font-size:19px">touch_app</span><span data-en="Tap to choose your dates — first arrival, then departure">Toca para elegir tus fechas — primero llegada, luego salida</span></p>
+    <p data-reveal style="margin-top:14px;color:#cfccbf;font:500 14px Manrope"><span class="ico" style="font-size:16px;color:var(--gold);vertical-align:-3px">sell</span> <b style="color:#fff">$40.000 COP</b> <span data-en="/ person · night — from $34.000 for 4+ nights · Free cancellation · $0 today">/ persona · noche — desde $34.000 en 4+ noches · Cancelación gratuita · $0 hoy</span></p>
+  </div>
+  <div style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);z-index:3;color:rgba(255,255,255,.55);animation:floaty 2.6s ease-in-out infinite" class="hide-mobile"><span class="ico" style="font-size:30px">keyboard_arrow_down</span></div>
+</section>
+
+<!-- ===================== TRUST STRIP ===================== -->
+<section style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2)">
+  <div style="max-width:1280px;margin:0 auto;padding:26px 22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:18px">
+    <div style="display:flex;align-items:center;gap:13px"><span class="ico" style="font-size:30px;color:var(--gold)">verified</span><div><div style="font:800 18px Manrope;color:var(--text)">Superanfitrión</div><div style="font:500 13px Manrope;color:var(--muted)" data-en="Carlos · 11 years hosting">Carlos · 11 años hospedando</div></div></div>
+    <div style="display:flex;align-items:center;gap:13px"><span class="ico" style="font-size:30px;color:var(--gold)">water_drop</span><div><div style="font:800 18px Manrope;color:var(--text)" data-en="Own spring water">Agua de manantial</div><div style="font:500 13px Manrope;color:var(--muted)" data-en="Refill your tanks">Recarga tus tanques</div></div></div>
+    <div style="display:flex;align-items:center;gap:13px"><span class="ico" style="font-size:30px;color:var(--gold)">recycling</span><div><div style="font:800 18px Manrope;color:var(--text)" data-en="Eco waste system">Aguas eco-friendly</div><div style="font:500 13px Manrope;color:var(--muted)" data-en="6-stage natural filtering">Filtrado natural 6 etapas</div></div></div>
+    <div style="display:flex;align-items:center;gap:13px"><span class="ico" style="font-size:30px;color:var(--gold)">pets</span><div><div style="font:800 18px Manrope;color:var(--text)" data-en="Pet friendly">Pet friendly</div><div style="font:500 13px Manrope;color:var(--muted)" data-en="Stays of 28+ days">Estadías de 28+ días</div></div></div>
+  </div>
+</section>
+
+<!-- ===================== RESERVA DESTACADA (feature) ===================== -->
+<section id="reserva" style="position:relative;background:linear-gradient(160deg,#f4ecd9,#f3ead4);color:#241f14;overflow:hidden;border-top:1px solid rgba(166,124,46,.3)">
+  <div style="position:absolute;inset:0;background:radial-gradient(50% 60% at 88% 18%,rgba(201,162,75,.24),transparent 60%),radial-gradient(45% 50% at 6% 96%,rgba(122,155,90,.14),transparent 60%);pointer-events:none"></div>
+  <div id="featWrap" style="position:relative;max-width:1240px;margin:0 auto;padding:clamp(52px,6vw,96px) 22px;display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,72px);align-items:center">
+    <div data-reveal id="featImg" style="position:relative;border-radius:26px;overflow:hidden;box-shadow:0 32px 62px -22px rgba(80,60,20,.55);aspect-ratio:4/5">
+      <div id="featTrack" style="display:flex;height:100%;transition:transform .6s cubic-bezier(.6,.05,.2,1)">
+        <img src="assets/van-tent-jungle.avif" alt="Camper entre la selva" style="flex:0 0 100%;height:100%;object-fit:cover">
+        <img src="assets/van-jungle-day.avif" alt="Motorhome bajo los árboles" style="flex:0 0 100%;height:100%;object-fit:cover">
+        <img src="assets/dining-hammock.avif" alt="Comedor con hamacas" style="flex:0 0 100%;height:100%;object-fit:cover">
+        <img src="assets/coworking-side.avif" alt="Coworking frente al estanque" style="flex:0 0 100%;height:100%;object-fit:cover">
+      </div>
+      <span style="position:absolute;top:16px;left:16px;padding:7px 14px;border-radius:20px;background:rgba(20,18,10,.78);backdrop-filter:blur(6px);font:700 10px Oswald,sans-serif;letter-spacing:.16em;color:#f4d97b" data-en="FEATURED STAY">RESERVA DESTACADA</span>
+      <div id="featDots" style="position:absolute;bottom:16px;left:0;right:0;display:flex;gap:7px;justify-content:center"></div>
+    </div>
+    <div data-reveal>
+      <div style="display:flex;align-items:center;gap:12px"><span style="width:34px;height:2px;background:#a67c2e"></span><span style="font:700 12px Oswald,sans-serif;letter-spacing:.28em;color:#a67c2e;text-transform:uppercase" data-en="Caravan experience">Experiencia Caravan</span></div>
+      <h2 style="margin-top:16px;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(32px,4vw,52px);line-height:1.02;color:#241f14"><span data-en="Your escape">Tu escape</span><br><span style="color:#a67c2e;font-style:italic" data-en="starts in Cali.">empieza en Cali.</span></h2>
+      <p style="margin-top:18px;color:#6a5f45;font-size:17px;max-width:470px;line-height:1.55" data-en="Clean water, hot showers under the stars, kitchen, wifi and a garden that breathes. Everything your motorhome needs, in one place.">Agua limpia, duchas calientes bajo las estrellas, cocina, wifi y un jardín que respira. Todo lo que tu casa rodante necesita, en un solo lugar.</p>
+      <div style="margin-top:26px;border-top:1px solid rgba(166,124,46,.3)">
+        <div style="display:flex;gap:16px;padding:15px 0;border-bottom:1px solid rgba(166,124,46,.3)"><span style="flex:none;width:96px;font:700 11px Oswald,sans-serif;letter-spacing:.14em;color:#a67c2e;padding-top:2px" data-en="INCLUDES">INCLUYE</span><span style="flex:1;font:600 15px Manrope;color:#3b352a" data-en="Water · Hot showers · Kitchen · Wifi · Bonfire">Agua · Duchas calientes · Cocina · Wifi · Fogata</span></div>
+        <div style="display:flex;gap:16px;padding:15px 0;border-bottom:1px solid rgba(166,124,46,.3)"><span style="flex:none;width:96px;font:700 11px Oswald,sans-serif;letter-spacing:.14em;color:#a67c2e;padding-top:2px" data-en="STAY">ESTANCIA</span><span style="flex:1;font:600 15px Manrope;color:#3b352a" data-en="From 1 night · up to 30+ days allowed">Desde 1 noche · hasta +30 días permitido</span></div>
+        <div style="display:flex;gap:16px;padding:15px 0"><span style="flex:none;width:96px;font:700 11px Oswald,sans-serif;letter-spacing:.14em;color:#a67c2e;padding-top:2px" data-en="PET">MASCOTA</span><span style="flex:1;font:600 15px Manrope;color:#3b352a" data-en="Pet friendly · no restrictions">Pet friendly · sin restricciones</span></div>
+      </div>
+      <div style="margin-top:24px;display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap">
+        <div><div style="font-family:'Cormorant Garamond',serif;font-weight:700;font-size:46px;line-height:1;color:#241f14">$40.000</div><div style="font:600 13px Manrope;color:#8a7d5f" data-en="/ person · night · from $34.000 for 4+ nights">/ persona · noche · desde $34.000 en 4+ noches</div></div>
+      </div>
+      <button class="js-book cta-shimmer" style="margin-top:26px;display:inline-flex;align-items:center;gap:10px;height:60px;padding:0 34px;border-radius:999px;border:none;cursor:pointer;background:linear-gradient(135deg,#2a2416,#171310);color:#f4d97b;font:800 16px Manrope;white-space:nowrap;box-shadow:0 18px 38px -12px rgba(40,30,10,.6)"><span data-en="Book my spot">Reservar mi puesto</span> <span class="ico">arrow_forward</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ACOMODACIONES (light) ===================== -->
+<section id="mapa" style="background:#f3ead4;border-bottom:1px solid rgba(166,124,46,.3);position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;background:radial-gradient(70% 55% at 88% 0%,rgba(201,162,75,.26),transparent 60%),radial-gradient(60% 50% at 4% 100%,rgba(201,162,75,.18),transparent 60%);pointer-events:none"></div>
+  <div style="position:relative;max-width:1280px;margin:0 auto;padding:clamp(56px,8vw,104px) 22px">
+    <div data-reveal style="text-align:center;max-width:760px;margin:0 auto 48px">
+      <span style="font:700 13px Oswald,sans-serif;letter-spacing:.26em;color:#a67c2e;text-transform:uppercase" data-en="Accommodations">Acomodaciones</span>
+      <h2 style="margin-top:14px;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(36px,5vw,60px);line-height:1.02;color:#241f14" data-en="Choose how you want to live it.">Elige cómo quieres vivir la experiencia.</h2>
+      <p style="margin-top:16px;color:#6a5f45;font-size:17px" data-en="Three ways to live in nature. Pick your favorite and book in a few taps.">Tres formas de vivir la naturaleza. Escoge tu favorita y reserva en pocos toques.</p>
+    </div>
+    <div id="accGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px"></div>
+    <div style="margin-top:40px;text-align:center">
+      <button class="js-book" style="display:inline-flex;align-items:center;gap:10px;height:58px;padding:0 36px;border-radius:999px;border:none;cursor:pointer;background:linear-gradient(135deg,#1a1c14,#33351f);color:#f4d97b;font:800 16px Oswald,sans-serif;letter-spacing:.04em;box-shadow:0 14px 34px -12px rgba(40,40,20,.6)"><span class="ico" style="font-size:22px">event_available</span><span data-en="Start your booking">Iniciar mi reserva</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ACERCA ===================== -->
+<section id="espacio" style="max-width:1280px;margin:0 auto;padding:clamp(52px,6vw,96px) 22px">
+  <div id="aboutRow" style="display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,72px);align-items:center">
+    <div data-reveal>
+      <span style="font:600 13px Manrope;letter-spacing:.22em;color:var(--gold);text-transform:uppercase" data-en="About this space">Acerca de este espacio</span>
+      <h2 style="margin-top:16px;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(30px,3.4vw,46px);line-height:1.02;letter-spacing:-.01em" data-en="A green refuge for those who travel their own way.">Un refugio verde para quienes viajan a su manera.</h2>
+      <p style="margin-top:22px;color:var(--muted);font-size:17px" data-en="If you travel in your motorhome or caravan, this is the ideal place for you. Park and stay overnight at Ishka Center & EcoLiving — a haven of nature within the city of Cali, with everything you need to rest and keep exploring.">Si viajas en tu carro casa rodante o caravan, este es el lugar ideal para ti. Podrás aparcarte y pernoctar en Ishka Center & EcoLiving, un lugar lleno de naturaleza en la ciudad de Cali, con todo lo que necesitas para descansar y seguir tu ruta.</p>
+      <div class="about-feats" style="margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <div style="display:flex;gap:11px;align-items:flex-start;padding:15px;border:1px solid var(--line);border-radius:15px;background:var(--surface)"><span class="ico" style="color:var(--sage);font-size:24px">water_drop</span><span style="font:600 14px Manrope;color:var(--text)" data-en="Clean water refill for your tanks">Recarga de agua limpia para tus tanques</span></div>
+        <div style="display:flex;gap:11px;align-items:flex-start;padding:15px;border:1px solid var(--line);border-radius:15px;background:var(--surface)"><span class="ico" style="color:var(--sage);font-size:24px">sanitizer</span><span style="font:600 14px Manrope;color:var(--text)" data-en="Grey & black water disposal, eco-friendly">Descarga de residuos y aguas negras eco</span></div>
+        <div style="display:flex;gap:11px;align-items:flex-start;padding:15px;border:1px solid var(--line);border-radius:15px;background:var(--surface)"><span class="ico" style="color:var(--sage);font-size:24px">local_fire_department</span><span style="font:600 14px Manrope;color:var(--text)" data-en="Bonfire & BBQ zone">Zona de fogatas y BBQ</span></div>
+        <div style="display:flex;gap:11px;align-items:flex-start;padding:15px;border:1px solid var(--line);border-radius:15px;background:var(--surface)"><span class="ico" style="color:var(--sage);font-size:24px">local_laundry_service</span><span style="font:600 14px Manrope;color:var(--text)" data-en="Laundry & drying (extra fee)">Lavado y secado de ropa (cargo adicional)</span></div>
+      </div>
+    </div>
+    <div data-reveal class="about-media" style="position:relative">
+      <div style="position:relative;border-radius:24px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/5"><img src="assets/pond-lotus.avif" alt="Motorhome de expedición estacionado entre la selva" style="width:100%;height:100%;object-fit:cover"></div>
+      <div style="position:absolute;bottom:-22px;left:-22px;width:44%;border-radius:18px;overflow:hidden;border:5px solid var(--bg);box-shadow:var(--shadow)" class="hide-mobile"><img src="assets/camper-ticus-tall.avif" alt="Círculo de piedras y fogata en el jardín" style="width:100%;aspect-ratio:1;object-fit:cover"></div>
+      <div style="position:absolute;top:22px;right:22px;background:rgba(14,16,12,.62);backdrop-filter:blur(10px);border:1px solid rgba(231,205,138,.35);border-radius:14px;padding:12px 16px;text-align:center"><div style="font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;color:var(--gold-lite);line-height:1">10</div><div style="font:600 11px Manrope;letter-spacing:.08em;color:#e9e6da" data-en="parking spots">puestos</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ESPACIOS / GALERÍA ===================== -->
+<section id="espacios" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(52px,6vw,90px) 22px">
+    <div data-reveal style="max-width:680px;margin-bottom:44px">
+      <span style="font:600 13px Manrope;letter-spacing:.22em;color:var(--gold);text-transform:uppercase" data-en="The spaces">Los espacios</span>
+      <h2 style="margin-top:14px;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(30px,3.4vw,46px);line-height:1.02" data-en="Amplitude, shade and nature in every corner.">Amplitud, sombra y naturaleza en cada rincón.</h2>
+      <p style="margin-top:18px;color:var(--muted);font-size:17px" data-en="Numerous wide spots to park your motorhome or trailer. Sleep in your vehicle, pitch your tent in our garden, or use the covered platform. 3 showers, 2 bathrooms and 2 sinks under roof, plus 4 open-air showers.">Numerosos y amplios espacios para estacionar tu carro casa o trailer. Pernocta en tu vehículo, monta tu carpa en el jardín, o usa la plataforma techada. 3 duchas, 2 baños y 2 lavabos bajo techo, más 4 duchas al aire libre.</p>
+      <p class="only-mobile-flex" style="margin-top:16px;align-items:center;gap:8px;color:var(--gold);font:700 13px Manrope"><span class="ico swipe-ico" style="font-size:18px">swipe</span><span data-en="Swipe through the spaces">Desliza para recorrer los espacios</span></p>
+    </div>
+    <div id="galleryGrid" style="display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:14px;overflow-x:auto">
+      <figure data-reveal data-lb="assets/dining-hammock.avif" style="grid-column:span 2;grid-row:span 2;position:relative;border-radius:20px;overflow:hidden;cursor:pointer;margin:0"><img src="assets/dining-hammock.avif" alt="Dos campers estacionadas en el jardín" style="width:100%;height:100%;object-fit:cover;transition:transform .7s"><figcaption style="position:absolute;left:16px;bottom:14px;color:#fff;font:700 15px Manrope;text-shadow:0 1px 12px rgba(0,0,0,.6)" data-en="Garden parking">Puestos en el jardín</figcaption></figure>
+      <figure data-reveal data-lb="assets/kitchen-outdoor.avif" style="position:relative;border-radius:20px;overflow:hidden;cursor:pointer;margin:0"><img src="assets/kitchen-outdoor.avif" alt="Cocina al aire libre con estufa a gas" style="width:100%;height:100%;object-fit:cover"></figure>
+      <figure data-reveal data-lb="assets/garden-temazcal.avif" style="position:relative;border-radius:20px;overflow:hidden;cursor:pointer;margin:0"><img src="assets/garden-temazcal.avif" alt="Bancas y domo de bambú en el jardín" style="width:100%;height:100%;object-fit:cover"></figure>
+      <figure data-reveal data-lb="assets/coworking-side.avif" style="position:relative;border-radius:20px;overflow:hidden;cursor:pointer;margin:0"><img src="assets/coworking-side.avif" alt="Coworking en bambú frente al estanque" style="width:100%;height:100%;object-fit:cover"></figure>
+      <figure data-reveal data-lb="assets/camper-ford-tall.avif" style="position:relative;border-radius:20px;overflow:hidden;cursor:pointer;margin:0"><img src="assets/camper-ford-tall.avif" alt="Baños con puertas de madera nuevas" style="width:100%;height:100%;object-fit:cover"></figure>
+      <figure data-reveal data-lb="assets/camper-map-tall.avif" style="grid-column:span 2;position:relative;border-radius:20px;overflow:hidden;cursor:pointer;margin:0"><img src="assets/camper-map-tall.avif" alt="Casa principal y círculo de piedras" style="width:100%;height:100%;object-fit:cover"><figcaption style="position:absolute;left:16px;bottom:14px;color:#fff;font:700 15px Manrope;text-shadow:0 1px 12px rgba(0,0,0,.6)" data-en="Living garden">Jardín vivo</figcaption></figure>
+      <figure data-reveal data-lb="assets/van-jungle-day.avif" style="position:relative;border-radius:20px;overflow:hidden;cursor:pointer;margin:0"><img src="assets/van-jungle-day.avif" alt="Casa rodante entre palmas de la selva" style="width:100%;height:100%;object-fit:cover"></figure>
+      <figure data-reveal data-lb="assets/hamacas.webp" style="position:relative;border-radius:20px;overflow:hidden;cursor:pointer;margin:0"><img src="assets/hamacas.webp" alt="Hamacas de colores en la plataforma techada de bambú" style="width:100%;height:100%;object-fit:cover"><figcaption style="position:absolute;left:16px;bottom:14px;color:#fff;font:700 15px Manrope;text-shadow:0 1px 12px rgba(0,0,0,.6)" data-en="Hammock deck">Hamacas bajo techo</figcaption></figure>
+      <figure data-reveal data-lb="assets/showers-mural.avif" style="position:relative;border-radius:20px;overflow:hidden;cursor:pointer;margin:0"><img src="assets/showers-mural.avif" alt="Duchas al aire libre con mural" style="width:100%;height:100%;object-fit:cover"></figure>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== SERVICIOS ===================== -->
+<section id="servicios" style="background:radial-gradient(70% 60% at 90% 0,rgba(201,162,75,.07),transparent 60%),var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(52px,6vw,90px) 22px">
+    <div data-reveal style="max-width:680px;margin-bottom:44px">
+      <span style="font:600 13px Manrope;letter-spacing:.22em;color:var(--gold);text-transform:uppercase" data-en="What this place offers">Lo que este lugar ofrece</span>
+      <h2 style="margin-top:14px;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(30px,3.4vw,46px);line-height:1.02" data-en="Everything ready for a long, comfortable stay.">Todo listo para una estadía larga y cómoda.</h2>
+      <p style="margin-top:12px;color:var(--faint);font:600 13px Manrope;display:flex;align-items:center;gap:7px"><span class="ico swipe-ico" style="font-size:18px;color:var(--gold)">swipe</span><span data-en="Swipe to see all amenities">Desliza para ver todas las comodidades</span></p>
+    </div>
+    <div id="amenGrid" style="display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 16px"></div>
+    <p data-reveal style="margin-top:26px;color:var(--faint);font:500 14px Manrope"><span class="ico" style="font-size:16px;vertical-align:-3px">info</span> <span data-en="Not available: TV, dryer, A/C, heating and hot water. Registration no. 140485.">No disponible: televisión, secadora, aire acondicionado, calefacción y agua caliente. Registro nacional de turismo n.º 140485.</span></p>
+  </div>
+</section>
+
+<!-- ===================== HISTORIA ECO ===================== -->
+<section style="position:relative;overflow:hidden">
+  <img src="assets/house-wide.webp" alt="Casa principal de Ishka Center rodeada de jardín" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,var(--bg) 0%,rgba(14,16,12,.72) 30%,rgba(14,16,12,.82) 100%)"></div>
+  <div style="position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:clamp(52px,6vw,96px) 22px">
+    <div data-reveal style="max-width:720px;margin-bottom:48px">
+      <span style="font:600 13px Manrope;letter-spacing:.22em;color:var(--gold-lite);text-transform:uppercase" data-en="A living ecosystem">Un ecosistema vivo</span>
+      <h2 style="margin-top:14px;font-family:'Cormorant Garamond',serif;font-weight:600;color:#fff;font-size:clamp(30px,3.4vw,46px);line-height:1.02" data-en="Staying here, you care for the planet — and save money.">Hospedándote aquí, cuidas el planeta — y ahorras dinero.</h2>
+      <p style="margin-top:18px;color:#e0ddd0;font-size:17px" data-en="No other place in the city offers these conditions at this value. A sustainable cycle you become part of the moment you arrive.">Ningún otro sitio de la ciudad te ofrece estas condiciones a este costo-beneficio. Un ciclo sostenible del que haces parte desde que llegas.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+      <div data-reveal style="padding:26px;border-radius:20px;background:rgba(23,27,18,.66);backdrop-filter:blur(10px);border:1px solid rgba(231,205,138,.22)"><span class="ico" style="font-size:34px;color:var(--gold-lite)">water_drop</span><h3 style="margin-top:14px;font:800 18px Manrope;color:#fff" data-en="Underground spring">Fuente subterránea</h3><p style="margin-top:8px;color:#cfccbf;font:500 14px Manrope" data-en="Our own clean underground water source.">Nuestra propia fuente de agua subterránea, muy limpia.</p></div>
+      <div data-reveal style="padding:26px;border-radius:20px;background:rgba(23,27,18,.66);backdrop-filter:blur(10px);border:1px solid rgba(231,205,138,.22)"><span class="ico" style="font-size:34px;color:var(--gold-lite)">filter_alt</span><h3 style="margin-top:14px;font:800 18px Manrope;color:#fff" data-en="Water treated in 6 stages">Aguas tratadas en 6 etapas</h3><p style="margin-top:8px;color:#cfccbf;font:500 14px Manrope" data-en="Natural decanting & filtering; the result irrigates the garden.">Decantación y filtrado naturales; el agua riega el jardín y los cultivos.</p></div>
+      <div data-reveal style="padding:26px;border-radius:20px;background:rgba(23,27,18,.66);backdrop-filter:blur(10px);border:1px solid rgba(231,205,138,.22)"><span class="ico" style="font-size:34px;color:var(--gold-lite)">egg</span><h3 style="margin-top:14px;font:800 18px Manrope;color:#fff" data-en="Happy hens">Gallinas felices</h3><p style="margin-top:8px;color:#cfccbf;font:500 14px Manrope" data-en="Organic eggs for the breakfasts we offer our guests.">Huevos orgánicos para los desayunos que ofrecemos a huéspedes.</p></div>
+      <div data-reveal style="padding:26px;border-radius:20px;background:rgba(23,27,18,.66);backdrop-filter:blur(10px);border:1px solid rgba(231,205,138,.22)"><span class="ico" style="font-size:34px;color:var(--gold-lite)">nutrition</span><h3 style="margin-top:14px;font:800 18px Manrope;color:#fff" data-en="Organic garden">Huerta orgánica</h3><p style="margin-top:8px;color:#cfccbf;font:500 14px Manrope" data-en="Fruits, plantain and vegetables grown for on-site consumption.">Frutas, plátanos y hortalizas cultivadas para el autoconsumo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RESEÑAS ===================== -->
+<section id="resenas" style="max-width:1280px;margin:0 auto;padding:clamp(52px,6vw,96px) 22px">
+  <div id="reviewHead" data-reveal style="display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,4vw,60px);align-items:center;margin-bottom:48px">
+    <div style="text-align:center">
+      <div style="font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(64px,10vw,120px);line-height:.9" class="gold-text">5.0</div>
+      <div style="display:flex;gap:3px;justify-content:center;margin-top:6px;color:var(--gold)"><span class="ico" style="font-size:22px">star</span><span class="ico" style="font-size:22px">star</span><span class="ico" style="font-size:22px">star</span><span class="ico" style="font-size:22px">star</span><span class="ico" style="font-size:22px">star</span></div>
+      <div style="margin-top:8px;color:var(--muted);font:600 14px Manrope" data-en="1,100+ five-star reviews">+1.100 reseñas · 5 estrellas</div>
+    </div>
+    <div>
+      <span style="font:600 13px Manrope;letter-spacing:.22em;color:var(--gold);text-transform:uppercase" data-en="What guests say">Lo que dicen los viajeros</span>
+      <h2 style="margin-top:12px;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(30px,4vw,50px);line-height:1.03" data-en="Travelers from all over the world, one shared feeling.">Viajeros de todo el mundo, una misma sensación.</h2>
+      <div class="rh-chips" style="margin-top:18px;display:flex;flex-wrap:wrap;gap:12px">
+        <span style="display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid var(--line);border-radius:999px;font:700 14px Manrope"><span class="ico" style="font-size:18px;color:#ff385c">favorite</span>Airbnb · 4.84 · 447</span>
+        <span style="display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid var(--line);border-radius:999px;font:700 14px Manrope"><span class="ico" style="font-size:18px;color:var(--gold)">star</span>Google · 5.0 · 701</span>
+      </div>
+      <p class="only-mobile-flex" style="margin-top:16px;align-items:center;gap:8px;color:var(--gold);font:700 13px Manrope"><span class="ico swipe-ico" style="font-size:18px">swipe</span><span data-en="Swipe to read more reviews">Desliza para leer más reseñas</span></p>
+    </div>
+  </div>
+  <div id="reviewGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start;overflow-x:auto"></div>
+</section>
+
+<!-- ===================== VIDEO TESTIMONIOS ===================== -->
+<section id="videos" style="background:linear-gradient(180deg,#f6efe0,#efe4cd);border-top:1px solid rgba(166,124,46,.3);border-bottom:1px solid rgba(166,124,46,.3);position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;background:radial-gradient(60% 50% at 100% 0,rgba(201,162,75,.22),transparent 60%),radial-gradient(50% 45% at 0 100%,rgba(201,162,75,.16),transparent 60%);pointer-events:none"></div>
+  <div style="position:relative;max-width:1280px;margin:0 auto;padding:clamp(56px,8vw,104px) 22px">
+    <div data-reveal style="text-align:center;max-width:720px;margin:0 auto 44px">
+      <span style="font:700 13px Oswald,sans-serif;letter-spacing:.26em;color:#a67c2e;text-transform:uppercase" data-en="See it before you arrive">Vívelo antes de llegar</span>
+      <h2 style="margin-top:14px;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(32px,4.6vw,54px);line-height:1.02;color:#241f14" data-en="Guests who stayed at Ishka Center.">Huéspedes que se quedaron en Ishka Center.</h2>
+      <p style="margin-top:14px;color:#6a5f45;font-size:17px" data-en="Real stories from travelers who parked their home among our trees.">Historias reales de viajeros que aparcaron su casa entre nuestros árboles.</p>
+      <p class="only-mobile-flex" style="margin-top:16px;align-items:center;gap:8px;color:#a67c2e;font:700 13px Manrope"><span class="ico swipe-ico" style="font-size:18px">swipe</span><span data-en="Swipe to see more videos">Desliza para ver más videos</span></p>
+    </div>
+    <div id="videoRow" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;overflow-x:auto">
+      <div style="position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/5;background-image:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.58)),url('assets/dining-hammock.avif');background-size:cover;background-position:center;box-shadow:0 22px 46px -18px rgba(80,60,20,.5)"><span style="position:absolute;top:14px;left:14px;padding:6px 12px;border-radius:20px;background:rgba(20,18,10,.7);backdrop-filter:blur(6px);font:700 10px Oswald,sans-serif;letter-spacing:.14em;color:#f4d97b">CAMPER</span><span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,.94);display:grid;place-items:center;box-shadow:0 12px 32px rgba(0,0,0,.45)"><span class="ico" style="font-size:40px;color:#1a1405;margin-left:4px">play_arrow</span></span><span style="position:absolute;left:16px;right:16px;bottom:14px"><span style="display:block;color:#fff;font:700 18px Manrope;text-shadow:0 1px 10px rgba(0,0,0,.7)">Mathias · Berlín</span><span style="display:block;color:rgba(255,255,255,.85);font:500 13px Manrope" data-en="Wake up among fruit trees">Despierta entre árboles frutales</span></span></div>
+      <div style="position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/5;background-image:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.58)),url('assets/van-jungle-day.avif');background-size:cover;background-position:center;box-shadow:0 22px 46px -18px rgba(80,60,20,.5)"><span style="position:absolute;top:14px;left:14px;padding:6px 12px;border-radius:20px;background:rgba(20,18,10,.7);backdrop-filter:blur(6px);font:700 10px Oswald,sans-serif;letter-spacing:.14em;color:#f4d97b">MOTORHOME</span><span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,.94);display:grid;place-items:center;box-shadow:0 12px 32px rgba(0,0,0,.45)"><span class="ico" style="font-size:40px;color:#1a1405;margin-left:4px">play_arrow</span></span><span style="position:absolute;left:16px;right:16px;bottom:14px"><span style="display:block;color:#fff;font:700 18px Manrope;text-shadow:0 1px 10px rgba(0,0,0,.7)">Valentina · Santiago</span><span style="display:block;color:rgba(255,255,255,.85);font:500 13px Manrope" data-en="Bonfires and starry skies">Fogatas y cielo estrellado</span></span></div>
+      <div style="position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/5;background-image:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.58)),url('assets/coworking-side.avif');background-size:cover;background-position:center;box-shadow:0 22px 46px -18px rgba(80,60,20,.5)"><span style="position:absolute;top:14px;left:14px;padding:6px 12px;border-radius:20px;background:rgba(20,18,10,.7);backdrop-filter:blur(6px);font:700 10px Oswald,sans-serif;letter-spacing:.14em;color:#f4d97b">NOMAD</span><span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,.94);display:grid;place-items:center;box-shadow:0 12px 32px rgba(0,0,0,.45)"><span class="ico" style="font-size:40px;color:#1a1405;margin-left:4px">play_arrow</span></span><span style="position:absolute;left:16px;right:16px;bottom:14px"><span style="display:block;color:#fff;font:700 18px Manrope;text-shadow:0 1px 10px rgba(0,0,0,.7)">Thomas · Lyon</span><span style="display:block;color:rgba(255,255,255,.85);font:500 13px Manrope" data-en="Work by the pond">Trabaja frente al estanque</span></span></div>
+    </div>
+    <div data-reveal style="margin-top:30px;display:flex;flex-direction:column;align-items:center;gap:16px"><p style="text-align:center;color:#6a5f45;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(22px,3vw,30px);max-width:620px;line-height:1.15" data-en="Your story could be the next one told here.">Tu historia podría ser la próxima que se cuente aquí.</p><button class="js-book cta-shimmer" style="display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 32px;border-radius:999px;border:none;cursor:pointer;background:linear-gradient(135deg,#2a2416,#171310);color:#f4d97b;font:800 16px Manrope;box-shadow:0 16px 34px -12px rgba(40,30,10,.5)"><span data-en="Start my reservation">Empezar mi reserva</span> <span class="ico">arrow_forward</span></button></div>
+  </div>
+</section>
+
+<!-- ===================== ANFITRIÓN + CTA ===================== -->
+<section style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div id="hostRow" style="max-width:1280px;margin:0 auto;padding:clamp(48px,5.5vw,80px) 22px;display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,64px);align-items:center">
+    <div data-reveal style="display:flex;gap:22px;align-items:center;flex-wrap:wrap">
+      <div style="width:132px;height:132px;border-radius:50%;flex:none;position:relative;box-shadow:0 14px 34px -12px rgba(0,0,0,.55)"><img src="assets/carlos.webp" alt="Carlos, anfitrión Superhost de Ishka Center" style="width:100%;height:100%;border-radius:50%;object-fit:cover;border:3px solid var(--gold)"><span style="position:absolute;bottom:4px;right:4px;width:36px;height:36px;border-radius:50%;background:#ff385c;border:3px solid var(--bg2);display:grid;place-items:center"><span class="ico" style="font-size:19px;color:#fff">verified</span></span></div>
+      <div>
+        <div style="font:600 13px Manrope;letter-spacing:.14em;color:var(--gold);text-transform:uppercase" data-en="Your host">Tu anfitrión</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-weight:700;font-size:40px;line-height:1">Carlos</div>
+        <div style="display:flex;gap:20px;margin-top:12px">
+          <div><div style="font:800 20px Manrope">429</div><div style="font:500 12px Manrope;color:var(--muted)" data-en="Reviews">Reseñas</div></div>
+          <div><div style="font:800 20px Manrope">4.84<span style="color:var(--gold)">★</span></div><div style="font:500 12px Manrope;color:var(--muted)" data-en="Rating">Calificación</div></div>
+          <div><div style="font:800 20px Manrope">11</div><div style="font:500 12px Manrope;color:var(--muted)" data-en="Years hosting">Años</div></div>
+        </div>
+      </div>
+    </div>
+    <div data-reveal>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(28px,3.6vw,44px);line-height:1.05" data-en="Ready to park where nature takes over?">¿List@ para aparcar donde manda la naturaleza?</h2>
+      <p style="margin-top:14px;color:var(--muted);font-size:16px" data-en="Free cancellation and $0 charged today. Confirm your spot in under two minutes.">Cancelación gratuita y $0 hoy. Confirma tu puesto en menos de dos minutos.</p>
+      <div style="margin-top:22px;display:flex;flex-wrap:wrap;gap:12px">
+        <button class="js-book cta-shimmer cta-lg" style="display:inline-flex;align-items:center;gap:9px;height:54px;padding:0 30px;border-radius:999px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--gold-lite),var(--gold));color:#1a1405;font:800 16px Manrope;box-shadow:0 12px 34px -10px rgba(201,162,75,.6)"><span class="ico" style="font-size:22px">event_available</span><span data-en="Book your spot">Reservar tu puesto</span></button>
+        <a id="waHostBtn" class="cta-lg" href="#" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;height:54px;padding:0 26px;border-radius:999px;border:1px solid var(--line);color:var(--text);font:700 15px Manrope" style-hover="border-color:var(--gold);color:var(--gold)"><span style="width:22px;height:22px;flex:none"><svg viewBox="0 0 32 32" width="22" height="22" fill="#25d366" aria-hidden="true"><path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.1 7.9L.3 31.7l8-2.1c2.3 1.3 4.9 1.9 7.6 1.9h.1c8.6 0 15.6-7 15.6-15.6C31.6 7.4 24.6.4 16 .4zm0 28.6h-.1c-2.4 0-4.7-.6-6.7-1.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C3.6 20.9 3 18.5 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13-5.8 13-13 13zm7.1-9.7c-.4-.2-2.3-1.1-2.6-1.3-.4-.1-.6-.2-.9.2s-1 1.3-1.2 1.5c-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.7.2-.2.2-.4.4-.6.1-.3 0-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.7c-.2 0-.6.1-1 .5-.3.4-1.3 1.3-1.3 3.1s1.3 3.6 1.5 3.9c.2.2 2.6 4 6.3 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.2-.3-.3-.7-.4z"/></svg></span><span data-en="Ask on WhatsApp">Escribir por WhatsApp</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section style="background:var(--bg2);border-top:1px solid var(--line)">
+  <div style="max-width:840px;margin:0 auto;padding:clamp(48px,5.5vw,84px) 22px">
+    <h2 data-reveal style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(30px,4vw,48px);text-align:center;margin-bottom:36px" data-en="Frequently asked questions">Preguntas frecuentes</h2>
+    <div id="faqList" style="display:flex;flex-direction:column;gap:12px"></div>
+  </div>
+</section>
+
+<!-- ===================== UBICACIÓN ===================== -->
+<section id="ubicacion" style="max-width:1280px;margin:0 auto;padding:clamp(52px,6vw,96px) 22px">
+  <div id="mapRow" style="display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(28px,4vw,56px);align-items:center">
+    <div data-reveal class="map-info" style="display:flex;flex-direction:column">
+      <span style="font:600 13px Manrope;letter-spacing:.22em;color:var(--gold);text-transform:uppercase" data-en="Location">Ubicación</span>
+      <h2 style="margin-top:14px;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(32px,4.4vw,54px);line-height:1.02" data-en="In Pance, one of Cali's greenest corners.">En Pance, uno de los rincones más verdes de Cali.</h2>
+      <p style="margin-top:18px;color:var(--muted);font-size:17px" data-en="Calm, away from the city buzz, surrounded by fruit trees and gardens — yet close to everything.">Tranquilidad, lejos de la agitación de la ciudad, rodeado de árboles frutales y jardines — pero cerca de todo.</p>
+      <div style="margin-top:24px;display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;gap:12px;align-items:flex-start"><span class="ico" style="color:var(--gold);font-size:24px">location_on</span><div><div style="font:700 15px Manrope">Ishka Center & EcoLiving</div><div style="font:500 14px Manrope;color:var(--muted)">Cra. 129 #25-181, Barrio Pance, Cali, Valle del Cauca</div></div></div>
+        <div style="display:flex;gap:12px;align-items:flex-start"><span class="ico" style="color:var(--gold);font-size:24px">self_improvement</span><div style="font:500 14px Manrope;color:var(--muted)" data-en="Yoga, motion & wellness school · Google 5.0 (701)">Escuela de yoga, motion & wellness · Google 5.0 (701)</div></div>
+      </div>
+      <a href="https://maps.app.goo.gl/qFzSbGVDRg6v9KnC9" target="_blank" rel="noopener" style="margin-top:24px;display:inline-flex;align-items:center;gap:9px;height:50px;padding:0 24px;border-radius:999px;border:1px solid var(--line);color:var(--text);font:700 15px Manrope" style-hover="border-color:var(--gold);color:var(--gold)"><span class="ico" style="font-size:20px">directions</span><span data-en="Open in Google Maps">Abrir en Google Maps</span></a>
+    </div>
+    <div data-reveal class="map-embed" style="border-radius:24px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);min-height:420px">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.084885489486!2d-76.52638782502802!3d3.329204696645586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a15dc5d711c5%3A0x387c446dae77cfd8!2sIshka%20Center%20-%20yoga%2C%20motion%20%26%20wellness%20school!5e0!3m2!1ses-419!2sco!4v1784661129566!5m2!1ses-419!2sco" width="100%" height="100%" style="border:0;min-height:420px;display:block" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer style="background:var(--bg);border-top:1px solid var(--line)">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(48px,7vw,80px) 22px 30px">
+    <div style="position:relative;overflow:hidden;border-radius:26px;padding:clamp(30px,5vw,52px);margin-bottom:48px;background:linear-gradient(135deg,#2a2416,#12100b);border:1px solid rgba(231,205,138,.28)">
+      <img src="assets/van-jungle-day.avif" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.16;pointer-events:none">
+      <div style="position:absolute;inset:0;background:linear-gradient(120deg,rgba(20,16,8,.82),rgba(20,16,8,.5)),radial-gradient(60% 90% at 90% 10%,rgba(201,162,75,.32),transparent 60%);pointer-events:none"></div>
+      <div style="position:relative;display:flex;flex-wrap:wrap;gap:26px;align-items:center;justify-content:space-between">
+        <div style="max-width:560px">
+          <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(28px,3.8vw,44px);line-height:1.03;color:#fff" data-en="Ready to live Cali on wheels?">¿List@ para vivir Cali sobre ruedas?</h2>
+          <p style="margin-top:12px;color:#cfccbf;font:500 15px Manrope" data-en="Free cancellation · $0 today · confirm your spot in under two minutes.">Cancelación gratuita · $0 hoy · confirma tu puesto en menos de dos minutos.</p>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:12px">
+          <button class="js-book cta-shimmer cta-lg" style="display:inline-flex;align-items:center;gap:9px;height:56px;padding:0 30px;border-radius:999px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--gold-lite),var(--gold));color:#1a1405;font:800 16px Manrope;box-shadow:0 14px 32px -10px rgba(201,162,75,.6)"><span class="ico" style="font-size:22px">event_available</span><span data-en="Book now">Reservar ahora</span></button>
+          <a id="waCtaBtn" class="cta-lg" href="#" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;height:56px;padding:0 26px;border-radius:999px;border:none;background:#25d366;color:#0a2e17;font:800 15px Manrope"><span style="width:22px;height:22px;display:grid;place-items:center"><svg viewBox="0 0 32 32" width="22" height="22" fill="#0a2e17" aria-hidden="true"><path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.1 7.9L.3 31.7l8-2.1c2.3 1.3 4.9 1.9 7.6 1.9h.1c8.6 0 15.6-7 15.6-15.6C31.6 7.4 24.6.4 16 .4zm0 28.6h-.1c-2.4 0-4.7-.6-6.7-1.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C3.6 20.9 3 18.5 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13-5.8 13-13 13zm7.1-9.7c-.4-.2-2.3-1.1-2.6-1.3-.4-.1-.6-.2-.9.2s-1 1.3-1.2 1.5c-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.7.2-.2.2-.4.4-.6.1-.3 0-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.7c-.2 0-.6.1-1 .5-.3.4-1.3 1.3-1.3 3.1s1.3 3.6 1.5 3.9c.2.2 2.6 4 6.3 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.2-.3-.3-.7-.4z"/></svg></span><span data-en="WhatsApp">WhatsApp</span></a>
+        </div>
+      </div>
+    </div>
+    <div id="footGrid" style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:34px">
+      <div>
+        <div style="display:flex;align-items:center;gap:11px;margin-bottom:16px"><span style="width:40px;height:40px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold-lite),var(--gold-deep));color:#1a1405"><span class="ico" style="font-size:24px">airport_shuttle</span></span><span style="font:700 16px/1.05 Manrope;letter-spacing:.1em">ISHKA<br><span style="font-size:11px;letter-spacing:.3em;color:var(--gold)">CARAVAN</span></span></div>
+        <p style="color:var(--muted);font:500 14px Manrope;max-width:300px" data-en="Eco parking for motorhomes & caravans within Ishka Center & EcoLiving, Cali.">Aparcadero ecológico para motorhomes y caravans dentro de Ishka Center & EcoLiving, Cali.</p>
+        <div class="foot-social" style="margin-top:18px;display:flex;gap:10px">
+          <a href="https://maps.app.goo.gl/qFzSbGVDRg6v9KnC9" target="_blank" rel="noopener" aria-label="Mapa" style="width:42px;height:42px;border-radius:11px;border:1px solid var(--line);display:grid;place-items:center;color:var(--text)" style-hover="border-color:var(--gold);color:var(--gold)"><span class="ico" style="font-size:20px">location_on</span></a>
+          <a id="waFootBtn" href="#" target="_blank" rel="noopener" aria-label="WhatsApp" style="width:42px;height:42px;border-radius:11px;border:1px solid var(--line);display:grid;place-items:center;color:var(--text)" style-hover="border-color:var(--gold);color:var(--gold)"><span style="width:20px;height:20px;display:grid;place-items:center"><svg viewBox="0 0 32 32" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.1 7.9L.3 31.7l8-2.1c2.3 1.3 4.9 1.9 7.6 1.9h.1c8.6 0 15.6-7 15.6-15.6C31.6 7.4 24.6.4 16 .4zm0 28.6h-.1c-2.4 0-4.7-.6-6.7-1.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C3.6 20.9 3 18.5 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13-5.8 13-13 13zm7.1-9.7c-.4-.2-2.3-1.1-2.6-1.3-.4-.1-.6-.2-.9.2s-1 1.3-1.2 1.5c-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.7.2-.2.2-.4.4-.6.1-.3 0-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.7c-.2 0-.6.1-1 .5-.3.4-1.3 1.3-1.3 3.1s1.3 3.6 1.5 3.9c.2.2 2.6 4 6.3 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.2-.3-.3-.7-.4z"/></svg></span></a>
+          <a href="https://www.ishka.center" target="_blank" rel="noopener" aria-label="Web" style="width:42px;height:42px;border-radius:11px;border:1px solid var(--line);display:grid;place-items:center;color:var(--text)" style-hover="border-color:var(--gold);color:var(--gold)"><span class="ico" style="font-size:20px">public</span></a>
+        </div>
+      </div>
+      <div>
+        <div style="font:700 13px Manrope;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:14px" data-en="Explore">Explora</div>
+        <a href="#espacio" style="display:block;color:var(--muted);font:500 14px Manrope;padding:6px 0" data-en="The place">El lugar</a>
+        <a href="#espacios" style="display:block;color:var(--muted);font:500 14px Manrope;padding:6px 0" data-en="Spaces">Espacios</a>
+        <a href="#servicios" style="display:block;color:var(--muted);font:500 14px Manrope;padding:6px 0" data-en="Amenities">Servicios</a>
+        <a href="#resenas" style="display:block;color:var(--muted);font:500 14px Manrope;padding:6px 0" data-en="Reviews">Reseñas</a>
+      </div>
+      <div>
+        <div style="font:700 13px Manrope;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:14px" data-en="Legal">Legal</div>
+        <a href="#" class="js-legal" data-legal="habeas" style="display:block;color:var(--muted);font:500 14px Manrope;padding:6px 0" data-en="Data policy (Habeas Data)">Tratamiento de datos</a>
+        <a href="#" class="js-legal" data-legal="terminos" style="display:block;color:var(--muted);font:500 14px Manrope;padding:6px 0" data-en="Terms & conditions">Términos y condiciones</a>
+        <a href="#" class="js-legal" data-legal="privacidad" style="display:block;color:var(--muted);font:500 14px Manrope;padding:6px 0" data-en="Privacy policy">Política de privacidad</a>
+      </div>
+      <div>
+        <div style="font:700 13px Manrope;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:14px" data-en="Contact">Contacto</div>
+        <div style="color:var(--muted);font:500 14px Manrope;padding:6px 0">Cra. 129 #25-181<br>Barrio Pance, Cali</div>
+        <div style="color:var(--muted);font:500 14px Manrope;padding:6px 0">RNT 140485</div>
+        <a id="waPhoneBtn" href="#" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;color:var(--gold);font:700 14px Manrope;padding:6px 0"><span class="ico" style="font-size:17px">call</span>+57 301 3473398</a>
+      </div>
+    </div>
+    <div style="margin-top:40px;padding-top:22px;border-top:1px solid var(--line2);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center">
+      <span style="color:var(--faint);font:500 13px Manrope">© <span id="year"></span> Ishka Center & EcoLiving · <span data-en="All rights reserved">Todos los derechos reservados</span></span>
+      <span style="color:var(--faint);font:500 13px Manrope" data-en="Made with care in Cali, Colombia 🌿">Hecho con cuidado en Cali, Colombia 🌿</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== WHATSAPP FLOAT ===================== -->
+<a id="waFloat" href="#" target="_blank" rel="noopener" aria-label="WhatsApp" style="position:fixed;right:20px;bottom:22px;z-index:150;width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#2bd46e,#0f7a41);display:grid;place-items:center;box-shadow:0 16px 36px -8px rgba(37,211,102,.6);animation:pulseRing 2.6s infinite;text-decoration:none"><span style="width:34px;height:34px;display:grid;place-items:center"><svg viewBox="0 0 32 32" width="32" height="32" fill="#fff" aria-hidden="true"><path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.1 7.9L.3 31.7l8-2.1c2.3 1.3 4.9 1.9 7.6 1.9h.1c8.6 0 15.6-7 15.6-15.6C31.6 7.4 24.6.4 16 .4zm0 28.6h-.1c-2.4 0-4.7-.6-6.7-1.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C3.6 20.9 3 18.5 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13-5.8 13-13 13zm7.1-9.7c-.4-.2-2.3-1.1-2.6-1.3-.4-.1-.6-.2-.9.2s-1 1.3-1.2 1.5c-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.7.2-.2.2-.4.4-.6.1-.3 0-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.7c-.2 0-.6.1-1 .5-.3.4-1.3 1.3-1.3 3.1s1.3 3.6 1.5 3.9c.2.2 2.6 4 6.3 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.2-.3-.3-.7-.4z"/></svg></span></a>
+
+<!-- ===================== LEGAL MODAL ===================== -->
+<div id="legalModal" style="display:none;position:fixed;inset:0;z-index:400;align-items:center;justify-content:center;padding:20px">
+  <div class="js-legal-close" style="position:absolute;inset:0;background:rgba(6,8,4,.7);backdrop-filter:blur(4px)"></div>
+  <div class="wz-scroll" style="position:relative;width:100%;max-width:680px;max-height:84vh;overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:34px 32px;box-shadow:var(--shadow)">
+    <button class="js-legal-close" aria-label="Cerrar" style="position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--text);cursor:pointer;display:grid;place-items:center"><span class="ico">close</span></button>
+    <h3 id="legalTitle" style="font-family:'Cormorant Garamond',serif;font-weight:700;font-size:32px;padding-right:40px"></h3>
+    <div id="legalBody" style="margin-top:16px;color:var(--muted);font:500 15px/1.7 Manrope"></div>
+  </div>
+</div>
+
+<!-- ===================== BOOKING WIZARD ===================== -->
+<div id="wizard" style="display:none;position:fixed;inset:0;z-index:500">
+  <div class="js-wz-close" style="position:absolute;inset:0;background:rgba(6,8,4,.74);backdrop-filter:blur(6px)"></div>
+  <div id="wzOuter" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:16px;pointer-events:none">
+    <div id="wzPanel" style="pointer-events:auto;width:100%;max-width:620px;max-height:92vh;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:26px;overflow:hidden;box-shadow:0 40px 100px -30px rgba(0,0,0,.8);animation:slideUp .45s cubic-bezier(.2,.8,.2,1)">
+      <!-- header -->
+      <div style="padding:18px 22px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--line)">
+        <button id="wzBack" style="width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--text);cursor:pointer;display:none;place-items:center"><span class="ico">arrow_back</span></button>
+        <div style="flex:1">
+          <div style="font:700 13px Manrope;color:var(--gold)" id="wzStepLabel">Paso 1 de 5</div>
+          <div style="margin-top:7px;height:5px;border-radius:3px;background:var(--surface2);overflow:hidden"><div id="wzBar" style="height:100%;width:20%;border-radius:3px;background:linear-gradient(90deg,var(--gold-lite),var(--gold));transition:width .4s cubic-bezier(.2,.8,.2,1)"></div></div>
+        </div>
+        <button class="js-wz-close" aria-label="Cerrar" style="width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--text);cursor:pointer;display:grid;place-items:center"><span class="ico">close</span></button>
+      </div>
+      <!-- body -->
+      <div id="wzBody" class="wz-scroll" style="flex:1;overflow-y:auto;padding:28px 26px"></div>
+      <!-- footer -->
+      <div style="padding:16px 22px;border-top:1px solid var(--line);display:flex;align-items:center;gap:14px;background:var(--surface)">
+        <div id="wzSummary" style="flex:1;font:500 13px Manrope;color:var(--muted)"></div>
+        <button id="wzNext" style="display:inline-flex;align-items:center;gap:8px;height:52px;padding:0 28px;border-radius:999px;border:none;cursor:pointer;background:linear-gradient(135deg,var(--gold-lite),var(--gold));color:#1a1405;font:800 15px Manrope;box-shadow:0 10px 26px -8px rgba(201,162,75,.55)"><span id="wzNextLabel">Continuar</span><span class="ico" style="font-size:20px">arrow_forward</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  componentDidMount(){
+    const $ = (s,r=document)=>r.querySelector(s);
+    const $$ = (s,r=document)=>Array.from(r.querySelectorAll(s));
+    const app = $('#app');
+
+    /* ---------- CONFIG ---------- */
+    const WHATSAPP = '573013473398'; // Ishka Caravan WhatsApp (formato internacional sin +)
+    const money = n => '$'+n.toLocaleString('es-CO')+' COP';
+    const ccList=[['🇨🇴','+57'],['🇺🇸','+1'],['🇲🇽','+52'],['🇦🇷','+54'],['🇨🇱','+56'],['🇵🇪','+51'],['🇧🇷','+55'],['🇪🇨','+593'],['🇪🇸','+34'],['🇩🇪','+49'],['🇫🇷','+33']];
+    const waLink = (msg)=>'https://wa.me/'+WHATSAPP+(msg?('?text='+encodeURIComponent(msg)):'');
+    ['#waFloat','#waHostBtn','#waFootBtn','#waCtaBtn','#waPhoneBtn'].forEach(id=>{const el=$(id); if(el) el.href=waLink('Hola Ishka Caravan 👋, quiero información para aparcar mi vehículo.');});
+    const yr=$('#year'); if(yr) yr.textContent=new Date().getFullYear();
+
+    /* ---------- ZONES / SPOTS ---------- */
+    const accommodations=[
+      {id:'bosque', name:'Bosque Premium', en:'Premium Forest', tag:'TECHADO', tagEn:'COVERED', icon:'forest', price:40000, cap:'Hasta 2 vehículos', capEn:'Up to 2 vehicles', img:'assets/van-jungle-day.avif', feat:['Sombra natural','Puesto techado','Más privacidad'], featEn:['Natural shade','Covered spot','More privacy']},
+      {id:'jardin', name:'Jardín Natural', en:'Natural Garden', tag:'AL AIRE LIBRE', tagEn:'OPEN AIR', icon:'park', price:40000, cap:'Camper o carpa', capEn:'Camper or tent', img:'assets/dining-hammock.avif', feat:['Sobre el pasto','Entre flores','Amaneceres únicos'], featEn:['On the grass','Among flowers','Unique sunrises']},
+      {id:'carpa', name:'Zona Carpa', en:'Tent Zone', tag:'GLAMPING', tagEn:'GLAMPING', icon:'cabin', price:40000, cap:'1–4 personas', capEn:'1–4 people', img:'assets/van-tent-jungle.avif', feat:['Monta tu carpa','Jardín abierto','Cerca de fogata'], featEn:['Pitch your tent','Open garden','Near bonfire']}
+    ];
+
+    /* ---------- I18N ---------- */
+    let lang = localStorage.getItem('ishka_lang')||'es';
+    const applyLang = ()=>{
+      $$('[data-en]').forEach(el=>{
+        if(el.dataset.es===undefined) el.dataset.es=el.textContent;
+        el.textContent = lang==='en'? el.dataset.en : el.dataset.es;
+      });
+      $('#langLabel').textContent = lang==='en'?'EN':'ES';
+      document.documentElement.lang = lang;
+      renderAmenities(); renderReviews(); renderFaq(); renderAccommodations();
+    };
+    $('#langBtn').addEventListener('click',()=>{ lang=lang==='es'?'en':'es'; localStorage.setItem('ishka_lang',lang); applyLang(); });
+
+    /* ---------- THEME ---------- */
+    let theme = localStorage.getItem('ishka_theme')||'dark';
+    const applyTheme=()=>{ app.dataset.theme=theme; $('#themeIcon').textContent=theme==='dark'?'dark_mode':'light_mode'; const tc=$('meta[name=theme-color]'); if(tc) tc.content= theme==='dark'?'#0e100c':'#f6f2e8'; };
+    $('#themeBtn').addEventListener('click',()=>{ theme=theme==='dark'?'light':'dark'; localStorage.setItem('ishka_theme',theme); applyTheme(); });
+    applyTheme();
+
+    /* ---------- NAV scroll + mobile ---------- */
+    const nav=$('#nav');
+    const onScroll=()=>{ if(window.scrollY>40){ nav.style.background='color-mix(in srgb, var(--bg) 88%, transparent)'; nav.style.backdropFilter='blur(14px)'; nav.style.borderBottomColor='var(--line)'; } else { nav.style.background='transparent'; nav.style.backdropFilter='none'; nav.style.borderBottomColor='transparent'; } };
+    window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+    const mm=$('#mobileMenu');
+    $('#menuBtn').addEventListener('click',()=>{ mm.style.display = mm.style.display==='block'?'none':'block'; });
+    $$('.js-mclose').forEach(a=>a.addEventListener('click',()=>{ mm.style.display='none'; }));
+
+    /* ---------- REVEAL ---------- */
+    const io=new IntersectionObserver((es)=>{ es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); },{threshold:.12});
+    $$('[data-reveal]').forEach(el=>io.observe(el));
+
+    /* ---------- GALLERY LIGHTBOX ---------- */
+    const lb=document.createElement('div');
+    lb.style.cssText='display:none;position:fixed;inset:0;z-index:450;align-items:center;justify-content:center;background:rgba(6,8,4,.92);padding:24px';
+    lb.innerHTML='<img style="max-width:94vw;max-height:90vh;border-radius:14px;object-fit:contain"><span class="ico" style="position:absolute;top:20px;right:24px;font-size:36px;color:#fff;cursor:pointer">close</span>';
+    document.body.appendChild(lb);
+    const lbImg=lb.querySelector('img');
+    lb.addEventListener('click',()=>{ lb.style.display='none'; });
+    $$('[data-lb]').forEach(f=>{ f.addEventListener('click',()=>{ lbImg.src=f.dataset.lb; lb.style.display='flex'; }); const im=f.querySelector('img'); if(im){ f.addEventListener('mouseenter',()=>im.style.transform='scale(1.06)'); f.addEventListener('mouseleave',()=>im.style.transform='scale(1)'); } });
+
+    /* ---------- AMENITIES ---------- */
+    const amenities=[
+      {i:'outdoor_grill', es:'Utensilios para parrillada', en:'BBQ utensils'},
+      {i:'countertops', es:'Cocina completa a gas', en:'Full gas kitchen'},
+      {i:'blender', es:'Licuadora', en:'Blender'},
+      {i:'kitchen', es:'Mininevera', en:'Mini-fridge'},
+      {i:'restaurant', es:'Platos y cubiertos', en:'Dishes & cutlery'},
+      {i:'local_laundry_service', es:'Lavadora (pagado)', en:'Washer (paid)'},
+      {i:'dry_cleaning', es:'Tendedero de ropa', en:'Clothes line'},
+      {i:'iron', es:'Plancha', en:'Iron'},
+      {i:'wifi', es:'Wifi', en:'Wifi'},
+      {i:'desk', es:'Zona de trabajo privada', en:'Private workspace'},
+      {i:'shower', es:'Ducha exterior', en:'Outdoor shower'},
+      {i:'bathtub', es:'Baño completo', en:'Full bathroom'},
+      {i:'water_drop', es:'Recarga de agua limpia', en:'Clean water refill'},
+      {i:'local_fire_department', es:'Lugar para fogata', en:'Bonfire spot'},
+      {i:'deck', es:'Cocina al aire libre', en:'Outdoor kitchen'},
+      {i:'weekend', es:'Hamacas', en:'Hammocks'},
+      {i:'pets', es:'Se permiten mascotas', en:'Pets allowed'},
+      {i:'luggage', es:'Guarda-equipaje', en:'Luggage drop-off'},
+      {i:'local_parking', es:'Parqueo gratis · 10 puestos', en:'Free parking · 10 spots'},
+      {i:'videocam', es:'8 cámaras en zonas comunes', en:'8 cameras in common areas'},
+      {i:'medical_services', es:'Botiquín + extintor', en:'First-aid kit + extinguisher'},
+      {i:'calendar_month', es:'Estadías de 28+ días', en:'Stays of 28+ days'}
+    ];
+    function renderAmenities(){
+      const g=$('#amenGrid'); if(!g) return; g.innerHTML='';
+      amenities.forEach(a=>{
+        const d=document.createElement('div');
+        d.style.cssText='flex:0 0 240px;scroll-snap-align:start;display:flex;align-items:center;gap:13px;padding:16px 17px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(158deg,var(--surface2),var(--surface));box-shadow:0 12px 26px -16px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.05);transition:transform .25s,box-shadow .25s,border-color .25s';
+        d.innerHTML='<span style="width:44px;height:44px;border-radius:13px;flex:none;display:grid;place-items:center;background:linear-gradient(145deg,rgba(231,205,138,.2),rgba(201,162,75,.05));border:1px solid var(--line);box-shadow:inset 0 1px 0 rgba(255,255,255,.08)"><span class="ico" style="font-size:24px;color:var(--gold)">'+a.i+'</span></span><span style="font:600 14px Manrope;color:var(--text)">'+(lang==='en'?a.en:a.es)+'</span>';
+        d.addEventListener('mouseenter',()=>{d.style.transform='translateY(-4px)';d.style.boxShadow='0 20px 36px -16px rgba(0,0,0,.8)';d.style.borderColor='var(--gold)';});
+        d.addEventListener('mouseleave',()=>{d.style.transform='none';d.style.boxShadow='0 12px 26px -16px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.05)';d.style.borderColor='var(--line)';});
+        g.appendChild(d);
+      });
+    }
+
+    /* ---------- REVIEWS ---------- */
+    const reviews=[
+      {n:'Noémie', loc:'Woluwe-Saint-Lambert, Bélgica', t:'Hace 1 semana', te:'1 week ago', es:'Me quedé una semana en el alojamiento de Carlos en Cali. Todo estuvo muy bien y el entorno encantador. La comunicación fluida, el equipo básico pero suficiente y todo decorado con gusto. Un lugar tranquilo, fuera de la agitación, con posibilidad de desayunar allí y tomar clases de yoga.', en:'I stayed a week at Carlos\u2019 place in Cali. Everything was great and the setting charming. Smooth communication, basic but sufficient gear, all tastefully decorated. A calm place, away from the bustle, with breakfast on site and yoga classes.'},
+      {n:'Mathias', loc:'Berlín, Alemania', t:'Hace 2 semanas', te:'2 weeks ago', es:'El mejor sitio para aparcar la camper en Cali. La naturaleza es increíble, dormimos con el sonido de los pájaros y despertamos entre árboles frutales. Carlos es un anfitrión de otro nivel.', en:'The best place to park the camper in Cali. Nature is incredible \u2014 we slept to birdsong and woke up among fruit trees. Carlos is a next-level host.'},
+      {n:'Valentina', loc:'Santiago, Chile', t:'Hace 1 mes', te:'1 month ago', es:'Llegamos con nuestro motorhome y no queríamos irnos. Agua limpia, duchas, cocina y un jardín de ensueño. La zona de fogata al atardecer es mágica. 100% recomendado para viajeros.', en:'We arrived with our motorhome and didn\u2019t want to leave. Clean water, showers, kitchen and a dreamy garden. The bonfire zone at sunset is magical. 100% recommended.'},
+      {n:'Thomas', loc:'Lyon, Francia', t:'Hace 1 mes', te:'1 month ago', es:'Trabajé remoto una semana desde el coworking en bambú frente al estanque. Wifi estable y una vista imposible de superar. Volveré sin duda.', en:'Worked remotely for a week from the bamboo coworking by the pond. Stable wifi and an unbeatable view. I\u2019ll definitely be back.'},
+      {n:'Camila', loc:'Medellín, Colombia', t:'Hace 2 meses', te:'2 months ago', es:'Un oasis ecológico dentro de Cali. Nos encantó el compromiso con la sostenibilidad: el agua, las gallinas, la huerta. Se siente el amor por el lugar.', en:'An eco oasis inside Cali. We loved the commitment to sustainability: the water, the hens, the garden. You can feel the love for this place.'},
+      {n:'Lucas & Ana', loc:'Buenos Aires, Argentina', t:'Hace 2 meses', te:'2 months ago', es:'Recorrimos toda Sudamérica y este fue uno de nuestros lugares favoritos para parar. Seguro, tranquilo y con toda la infraestructura para vida en ruta.', en:'We drove all of South America and this was one of our favorite places to stop. Safe, quiet, and with all the infrastructure for life on the road.'}
+    ];
+    const faces=['https://randomuser.me/api/portraits/women/68.jpg','https://randomuser.me/api/portraits/men/32.jpg','https://randomuser.me/api/portraits/women/44.jpg','https://randomuser.me/api/portraits/men/76.jpg','https://randomuser.me/api/portraits/women/90.jpg','https://randomuser.me/api/portraits/men/52.jpg'];
+    function renderReviews(){
+      const g=$('#reviewGrid'); if(!g) return; g.innerHTML='';
+      reviews.forEach((r,idx)=>{
+        const d=document.createElement('div');
+        d.style.cssText='margin:0;padding:24px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(158deg,var(--surface2),var(--surface));box-shadow:0 16px 34px -20px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.05);display:flex;flex-direction:column;height:100%';
+        d.innerHTML=
+          '<div style="display:flex;gap:3px;color:var(--gold);margin-bottom:12px">'+Array(5).fill('<span class="ico" style="font-size:17px">star</span>').join('')+'</div>'+
+          '<p style="font:500 15px/1.6 Manrope;color:var(--text)">\u201C'+(lang==='en'?r.en:r.es)+'\u201D</p>'+
+          '<div style="margin-top:16px;display:flex;align-items:center;gap:12px">'+
+            '<img src="'+faces[idx%faces.length]+'" alt="'+r.n+'" loading="lazy" style="width:46px;height:46px;border-radius:50%;flex:none;object-fit:cover;border:2px solid var(--gold)">'+
+            '<div style="min-width:0"><div style="font:700 14px Manrope;color:var(--text);display:flex;align-items:center;gap:6px">'+r.n+'<span class="ico" style="font-size:15px;color:#ff385c">verified</span></div><div style="font:500 12px Manrope;color:var(--muted)">'+r.loc+' · '+(lang==='en'?r.te:r.t)+'</div></div>'+
+          '</div>';
+        g.appendChild(d);
+      });
+    }
+
+    /* ---------- FAQ ---------- */
+    const faqs=[
+      {q:'¿Puedo quedarme más de una noche?', qe:'Can I stay more than one night?', a:'Sí. Puedes alojarte por más de 30 días; de hecho ofrecemos condiciones especiales para estadías largas (28 días o más).', ae:'Yes. You can stay for 30+ days; we even offer special conditions for long stays (28 days or more).'},
+      {q:'¿Qué servicios de agua ofrecen?', qe:'What water services do you offer?', a:'Recarga de agua limpia para tus tanques desde nuestra fuente subterránea, y descarga de residuos y aguas negras en nuestro sistema eco-friendly de 6 etapas de filtrado natural.', ae:'Clean water refill for your tanks from our underground spring, plus grey/black water disposal in our eco-friendly 6-stage natural filtering system.'},
+      {q:'¿Se permiten mascotas?', qe:'Are pets allowed?', a:'Sí, se permiten mascotas y no hay restricciones para animales de asistencia.', ae:'Yes, pets are welcome and there are no restrictions for assistance animals.'},
+      {q:'¿Hay wifi y espacio para trabajar?', qe:'Is there wifi and a place to work?', a:'Contamos con wifi y una zona de coworking en bambú frente al estanque, ideal para nómadas digitales.', ae:'We have wifi and a bamboo coworking area by the pond, ideal for digital nomads.'},
+      {q:'¿Cómo confirmo mi reserva?', qe:'How do I confirm my booking?', a:'Elige fechas y puesto en pocos pasos. Al finalizar te enviamos el resumen por WhatsApp para confirmar disponibilidad. No se hace ningún cargo hoy y la cancelación es gratuita.', ae:'Pick dates and spot in a few steps. At the end we send you the summary via WhatsApp to confirm availability. No charge today and free cancellation.'}
+    ];
+    function renderFaq(){
+      const l=$('#faqList'); if(!l) return; l.innerHTML='';
+      faqs.forEach((f,i)=>{
+        const item=document.createElement('div');
+        item.style.cssText='border:1px solid var(--line);border-radius:18px;background:linear-gradient(158deg,var(--surface2),var(--surface));overflow:hidden;transition:border-color .3s,box-shadow .3s';
+        const btn=document.createElement('button');
+        btn.style.cssText='width:100%;display:flex;align-items:center;gap:14px;padding:19px 20px;background:transparent;border:none;cursor:pointer;text-align:left;color:var(--text);font:700 16px Manrope';
+        btn.innerHTML='<span style="width:32px;height:32px;flex:none;border-radius:10px;display:grid;place-items:center;background:linear-gradient(145deg,rgba(231,205,138,.22),rgba(201,162,75,.06));border:1px solid var(--line);font:800 14px Oswald,sans-serif;color:var(--gold)">'+(i+1)+'</span><span style="flex:1">'+(lang==='en'?f.qe:f.q)+'</span><span class="ico" style="font-size:26px;color:var(--gold);transition:transform .3s">expand_more</span>';
+        const body=document.createElement('div');
+        body.style.cssText='max-height:0;overflow:hidden;transition:max-height .35s ease';
+        body.innerHTML='<p style="padding:0 20px 20px 66px;color:var(--muted);font:500 15px/1.62 Manrope">'+(lang==='en'?f.ae:f.a)+'</p>';
+        btn.addEventListener('click',()=>{ const open=body.style.maxHeight&&body.style.maxHeight!=='0px'; body.style.maxHeight=open?'0':body.scrollHeight+40+'px'; btn.querySelector('.ico').style.transform=open?'none':'rotate(180deg)'; item.style.borderColor=open?'var(--line)':'var(--gold)'; item.style.boxShadow=open?'none':'0 16px 34px -20px rgba(201,162,75,.5)'; });
+        item.appendChild(btn); item.appendChild(body); l.appendChild(item);
+      });
+    }
+
+    /* ---------- ACCOMMODATIONS (landing cards) ---------- */
+    function renderAccommodations(){
+      const g=$('#accGrid'); if(!g) return; g.innerHTML='';
+      accommodations.forEach(a=>{
+        const art=document.createElement('article');
+        art.style.cssText='background:#fff;border:1.5px solid rgba(166,124,46,.28);border-radius:28px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 18px 44px -18px rgba(80,60,20,.4),inset 0 1px 0 rgba(255,255,255,.7);transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s';
+        art.onmouseenter=()=>{art.style.transform='translateY(-6px)';art.style.boxShadow='0 26px 50px -18px rgba(80,60,20,.4)';};
+        art.onmouseleave=()=>{art.style.transform='none';art.style.boxShadow='0 12px 34px -14px rgba(80,60,20,.28)';};
+        art.innerHTML=
+          '<div class="acc-media" style="position:relative;aspect-ratio:4/5;background-image:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.35)),url(\''+a.img+'\');background-size:cover;background-position:center">'+
+            '<span style="position:absolute;top:12px;left:12px;padding:6px 12px;border-radius:20px;background:rgba(20,18,10,.72);backdrop-filter:blur(6px);font:700 10px Oswald,sans-serif;letter-spacing:.14em;color:#f4d97b">'+(lang==='en'?a.tagEn:a.tag)+'</span>'+
+            '<span class="ico" style="position:absolute;top:9px;right:12px;font-size:24px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.6)">'+a.icon+'</span>'+
+          '</div>'+
+          '<div class="acc-body" style="padding:18px;display:flex;flex-direction:column;gap:11px;flex:1">'+
+            '<div style="font-family:Oswald,sans-serif;font-weight:700;font-size:22px;line-height:1;color:#241f14;letter-spacing:.01em">'+(lang==='en'?a.en:a.name)+'</div>'+
+            '<div style="display:flex;align-items:center;gap:7px;color:#6a5f45;font:600 13px Manrope"><span class="ico" style="font-size:17px;color:#a67c2e">group</span>'+(lang==='en'?a.capEn:a.cap)+'</div>'+
+            '<div style="display:flex;flex-wrap:wrap;gap:6px">'+(lang==='en'?a.featEn:a.feat).map(f=>'<span style="padding:5px 10px;border-radius:20px;background:#f3ead4;color:#5a4f37;font:600 11.5px Manrope">'+f+'</span>').join('')+'</div>'+
+            '<div style="flex:1"></div>'+
+            '<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:10px;padding-top:12px;border-top:1px solid rgba(166,124,46,.18)">'+
+              '<div style="min-width:0"><div style="font:600 10.5px Manrope;letter-spacing:.08em;color:#8a7d5f">'+(lang==='en'?'FROM':'DESDE')+'</div><div style="font-family:Oswald,sans-serif;font-weight:700;font-size:22px;color:#241f14;white-space:nowrap">'+money(a.price)+'<span style="font-size:12px;color:#8a7d5f">'+(lang==='en'?'/pers·night':'/pers·noche')+'</span></div></div>'+
+              '<button class="js-acc cta-shimmer" data-acc="'+a.id+'" style="flex:none;white-space:nowrap;height:46px;padding:0 20px;border-radius:14px;border:none;cursor:pointer;background:linear-gradient(135deg,#e7cd8a,#c9a24b);color:#1a1405;font:800 14px Oswald,sans-serif;letter-spacing:.04em;box-shadow:0 8px 20px -6px rgba(201,162,75,.6);animation:ctaPulse 2.8s ease-in-out infinite">'+(lang==='en'?'Book now':'Reservar')+' →</button>'+
+            '</div>'+
+          '</div>';
+        g.appendChild(art);
+      });
+      $$('.js-acc',g).forEach(b=>b.addEventListener('click',()=>{ const a=accommodations.find(x=>x.id===b.dataset.acc); if(a) state.acc=a; openWizard(); }));
+    }
+
+    /* ---------- LEGAL ---------- */
+    const legal={
+      habeas:{ es:['Autorización de tratamiento de datos personales','En cumplimiento de la Ley 1581 de 2012 y el Decreto 1074 de 2015 de Colombia, Ishka Center & EcoLiving informa que los datos personales suministrados a través de este sitio (nombre, número de contacto y detalles de la reserva) serán tratados con la finalidad exclusiva de gestionar tu solicitud de alojamiento, confirmar disponibilidad y mantener comunicación contigo. No compartimos tu información con terceros con fines comerciales. Podrás conocer, actualizar, rectificar o solicitar la supresión de tus datos escribiéndonos por nuestros canales de contacto. Al enviar tu reserva autorizas de forma libre, previa e informada este tratamiento.'] },
+      terminos:{ es:['Términos y condiciones','El uso de este sitio y la solicitud de reserva implican la aceptación de estas condiciones. Las reservas están sujetas a disponibilidad y se confirman por WhatsApp; ningún valor se cobra en el momento de solicitar. Las tarifas se expresan en pesos colombianos (COP) y pueden variar según temporada y duración de la estadía. El huésped se compromete a respetar las normas del lugar: no tomar frutas de los árboles sin autorización, prohibido el consumo de sustancias alucinógenas dentro del predio, y cuidar las zonas comunes y la naturaleza. El incumplimiento podrá dar lugar a la terminación de la estadía sin reembolso. Ishka Center & EcoLiving no se hace responsable por pérdida o daño de objetos personales dejados en los vehículos o zonas comunes.'] },
+      privacidad:{ es:['Política de privacidad','Respetamos tu privacidad. Recopilamos únicamente la información necesaria para atender tu reserva y mejorar tu experiencia. Los datos se almacenan de forma segura y se conservan solo por el tiempo requerido para la finalidad indicada. Este sitio puede usar almacenamiento local del navegador para recordar tus preferencias (idioma y tema). No utilizamos tus datos para publicidad de terceros. Para cualquier solicitud sobre tus datos, contáctanos por WhatsApp o en Cra. 129 #25-181, Barrio Pance, Cali.'] }
+    };
+    const legalEN={
+      habeas:['Personal data authorization','In compliance with Colombian Law 1581 of 2012, Ishka Center & EcoLiving informs that personal data provided through this site (name, contact number and booking details) will be processed solely to manage your accommodation request, confirm availability and communicate with you. We do not share your information with third parties for commercial purposes. You may access, update, correct or request deletion of your data through our contact channels. By submitting your booking you freely and knowingly authorize this processing.'],
+      terminos:['Terms & conditions','Using this site and requesting a booking implies acceptance of these conditions. Bookings are subject to availability and confirmed via WhatsApp; no amount is charged at request time. Rates are in Colombian pesos (COP) and may vary by season and length of stay. Guests agree to respect house rules: do not pick fruit from the trees without authorization, no hallucinogenic substances on the premises, and care for common areas and nature. Non-compliance may end the stay without refund. Ishka Center & EcoLiving is not liable for loss or damage of personal belongings.'],
+      privacidad:['Privacy policy','We respect your privacy. We collect only the information needed to handle your booking and improve your experience. Data is stored securely and kept only as long as required. This site may use browser local storage to remember your preferences (language and theme). We do not use your data for third-party advertising. For any request about your data, contact us via WhatsApp or at Cra. 129 #25-181, Barrio Pance, Cali.']
+    };
+    const legalModal=$('#legalModal');
+    $$('.js-legal').forEach(a=>a.addEventListener('click',e=>{ e.preventDefault(); const k=a.dataset.legal; const data= lang==='en'? legalEN[k] : legal[k].es; $('#legalTitle').textContent=data[0]; $('#legalBody').innerHTML='<p>'+data.slice(1).join('</p><p style="margin-top:12px">')+'</p>'; legalModal.style.display='flex'; }));
+    $$('.js-legal-close').forEach(x=>x.addEventListener('click',()=>legalModal.style.display='none'));
+
+    /* ================= WIZARD ================= */
+    const wizard=$('#wizard'), wzBody=$('#wzBody'), wzBar=$('#wzBar'), wzBack=$('#wzBack'), wzNext=$('#wzNext'), wzNextLabel=$('#wzNextLabel'), wzStepLabel=$('#wzStepLabel'), wzSummary=$('#wzSummary');
+    const T=(es,en)=> lang==='en'?en:es;
+    let step=0;
+    const state={ vehicle:null, guests:1, pet:false, checkin:null, checkout:null, acc:null, spot:null, extras:[], name:'', cc:'+57', phone:'', email:'', notes:'', calMonth:new Date() };
+    const STEPS=6;
+    const extraOpts=[
+      {k:'yoga',i:'self_improvement',es:'Clases de yoga',en:'Yoga classes'},
+      {k:'breakfast',i:'egg_alt',es:'Desayuno orgánico',en:'Organic breakfast'},
+      {k:'coworking',i:'laptop_mac',es:'Coworking frente al estanque',en:'Pond-side coworking'},
+      {k:'bonfire',i:'local_fire_department',es:'Fogata & BBQ',en:'Bonfire & BBQ'},
+      {k:'laundry',i:'local_laundry_service',es:'Lavado y secado',en:'Laundry & drying'},
+      {k:'garden',i:'nutrition',es:'Tour por la huerta',en:'Garden tour'}
+    ];
+
+    let _scrollY=0;
+    function openWizard(){ _scrollY=window.scrollY||0; wizard.style.display='block'; document.body.style.top=(-_scrollY)+'px'; document.body.classList.add('wz-locked'); step=0; render(); }
+    function closeWizard(){ wizard.style.display='none'; document.body.classList.remove('wz-locked'); document.body.style.top=''; window.scrollTo(0,_scrollY); }
+    $$('.js-book').forEach(b=>b.addEventListener('click',openWizard));
+    $$('.js-wz-close').forEach(x=>x.addEventListener('click',closeWizard));
+    function goStep(s){ step=Math.max(0,Math.min(STEPS-1,s)); render(); }
+    wzBack.addEventListener('click',()=>goStep(step-1));
+    wzNext.addEventListener('click',()=>{
+      if(!canNext()) return;
+      if(step===STEPS-1){ submit(); return; }
+      goStep(step+1);
+    });
+
+    function nights(){ if(state.checkin&&state.checkout){ return Math.max(0,Math.round((state.checkout-state.checkin)/86400000)); } return 0; }
+    function rate(){ return nights()>4?34000:40000; }
+    function total(){ return nights()>0? rate()*state.guests*nights():0; }
+    function canNext(){
+      if(step===0) return !!state.vehicle;
+      if(step===1) return state.guests>=1;
+      if(step===2) return nights()>0;
+      if(step===3) return !!state.acc;
+      if(step===4) return true;
+      if(step===5) return state.name.trim().length>1;
+      return true;
+    }
+    function fmtDate(d){ if(!d) return '—'; return d.toLocaleDateString(lang==='en'?'en-US':'es-CO',{day:'2-digit',month:'short'}); }
+
+    function updateFooter(){
+      const stepNames=[T('Vehículo','Vehicle'),T('Viajeros','Travelers'),T('Fechas','Dates'),T('Acomodación','Stay'),T('Experiencias','Extras'),T('Datos','Details')];
+      wzBar.style.width=((step+1)/STEPS*100)+'%';
+      wzStepLabel.textContent=T('Paso ','Step ')+(step+1)+'/'+STEPS+' · '+stepNames[step];
+      wzBack.style.display= step===0?'none':'grid';
+      wzNextLabel.textContent = step===STEPS-1? T('Reservar espacio','Reserve space') : T('Continuar','Continue');
+      wzNext.style.opacity=canNext()?'1':'.45'; wzNext.style.pointerEvents=canNext()?'auto':'none';
+      const bits=[];
+      if(state.acc) bits.push(lang==='en'?state.acc.en:state.acc.name);
+      if(nights()>0) bits.push('· '+nights()+ T(' noche','  night')+(nights()>1?'s':''));
+      if(total()>0) bits.push('· '+money(total()));
+      wzSummary.innerHTML = bits.length? '<b style="color:var(--text)">'+bits.join(' ')+'</b>' : T('Sin cargo hoy · cancelación gratis','No charge today · free cancellation');
+    }
+
+    function render(){
+      wzBody.scrollTop=0;
+      if(step===0) renderVehicle();
+      else if(step===1) renderGuests();
+      else if(step===2) renderDates();
+      else if(step===3) renderAccommodation();
+      else if(step===4) renderExtras();
+      else renderContact();
+      updateFooter();
+    }
+
+    const H=(eyebrow,txt,sub)=>'<div style="font:700 12px Oswald,sans-serif;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:9px">'+eyebrow+'</div><h3 style="font-family:Oswald,sans-serif;font-weight:700;font-size:27px;line-height:1.08;letter-spacing:.01em;color:var(--text)">'+txt+'</h3>'+(sub?'<p style="margin-top:8px;color:var(--muted);font:500 14.5px Manrope">'+sub+'</p>':'');
+
+    function renderVehicle(){
+      const opts=[{k:'motorhome',i:'rv_hookup',es:'Motorhome / Casa rodante',en:'Motorhome'},{k:'camper',i:'airport_shuttle',es:'Camper / Van',en:'Camper / Van'},{k:'trailer',i:'rv_hookup',es:'Trailer / Remolque',en:'Trailer'},{k:'tent',i:'cabin',es:'Carpa en el jardín',en:'Tent in the garden'}];
+      wzBody.innerHTML=H(T('Paso 1 · Vehículo','Step 1 · Vehicle'),T('¿Con qué viajas?','What are you traveling in?'),T('Adaptamos tu espacio según tu vehículo.','We match your space to your vehicle.'))+'<div id="vgrid" style="margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:12px"></div>';
+      const g=$('#vgrid');
+      opts.forEach(o=>{
+        const b=document.createElement('button');
+        const sel=state.vehicle===o.k;
+        b.style.cssText='display:flex;flex-direction:column;gap:10px;padding:20px;border-radius:16px;cursor:pointer;text-align:left;transition:all .2s;background:var(--surface);border:1.5px solid '+(sel?'var(--gold)':'var(--line)')+';box-shadow:'+(sel?'0 0 0 3px rgba(201,162,75,.16)':'none')+'';
+        b.innerHTML='<span class="ico" style="font-size:30px;color:var(--gold)">'+o.i+'</span><span style="font:700 15px Manrope;color:var(--text)">'+T(o.es,o.en)+'</span>';
+        b.addEventListener('click',()=>{ state.vehicle=o.k; render(); });
+        g.appendChild(b);
+      });
+    }
+
+    function renderGuests(){
+      wzBody.innerHTML=H(T('Paso 2 · Viajeros','Step 2 · Travelers'),T('¿Cuántos viajan?','How many travelers?'),T('El espacio recibe hasta 6 huéspedes.','The space hosts up to 6 guests.'))+
+        '<div style="margin-top:26px;display:flex;align-items:center;justify-content:space-between;padding:20px;border:1px solid var(--line);border-radius:16px;background:var(--surface)">'+
+          '<div><div style="font:700 16px Manrope;color:var(--text)">'+T('Personas','People')+'</div><div style="font:500 13px Manrope;color:var(--muted)">'+T('adultos y niños','adults & children')+'</div></div>'+
+          '<div style="display:flex;align-items:center;gap:16px"><button id="gMinus" class="ico" style="width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);background:transparent;color:var(--text);cursor:pointer;font-size:22px">remove</button><span id="gVal" style="font:800 22px Manrope;min-width:26px;text-align:center">'+state.guests+'</span><button id="gPlus" class="ico" style="width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);background:transparent;color:var(--text);cursor:pointer;font-size:22px">add</button></div>'+
+        '</div>'+
+        '<button id="petTgl" style="margin-top:14px;width:100%;display:flex;align-items:center;gap:13px;padding:18px 20px;border:1.5px solid '+(state.pet?'var(--gold)':'var(--line)')+';border-radius:16px;background:var(--surface);cursor:pointer;text-align:left"><span class="ico" style="font-size:26px;color:var(--gold)">pets</span><div style="flex:1"><div style="font:700 15px Manrope;color:var(--text)">'+T('Viajo con mascota','Traveling with a pet')+'</div><div style="font:500 13px Manrope;color:var(--muted)">'+T('Pet friendly, sin restricciones','Pet friendly, no restrictions')+'</div></div><span class="ico" style="font-size:30px;color:'+(state.pet?'var(--gold)':'var(--faint)')+'">'+(state.pet?'toggle_on':'toggle_off')+'</span></button>';
+      $('#gMinus').addEventListener('click',()=>{ state.guests=Math.max(1,state.guests-1); render(); });
+      $('#gPlus').addEventListener('click',()=>{ state.guests=Math.min(6,state.guests+1); render(); });
+      $('#petTgl').addEventListener('click',()=>{ state.pet=!state.pet; render(); });
+    }
+
+    function renderDates(){
+      wzBody.innerHTML=H(T('Paso 3 · Fechas','Step 3 · Dates'),T('¿Cuándo llegas?','When are you arriving?'),T('Selecciona llegada y salida en el calendario.','Pick check-in and check-out on the calendar.'))+
+        '<div style="margin-top:20px;display:flex;gap:10px">'+
+          '<div style="flex:1;padding:13px 15px;border:1.5px solid '+(state.checkin?'var(--gold)':'var(--line)')+';border-radius:13px;background:var(--surface)'+(!state.checkin?';animation:pulseRing 2.2s ease-in-out infinite':'')+'"><div style="font:700 11px Manrope;letter-spacing:.1em;color:var(--gold)">'+T('LLEGADA','CHECK-IN')+'</div><div style="font:700 15px Manrope;color:var(--text);margin-top:3px">'+fmtDate(state.checkin)+'</div></div>'+
+          '<div style="flex:1;padding:13px 15px;border:1.5px solid '+(state.checkout?'var(--gold)':'var(--line)')+';border-radius:13px;background:var(--surface)'+((state.checkin&&!state.checkout)?';animation:pulseRing 2.2s ease-in-out infinite':'')+'"><div style="font:700 11px Manrope;letter-spacing:.1em;color:var(--gold)">'+T('SALIDA','CHECK-OUT')+'</div><div style="font:700 15px Manrope;color:var(--text);margin-top:3px">'+fmtDate(state.checkout)+'</div></div>'+
+        '</div>'+
+        '<div style="margin-top:12px;display:flex;align-items:center;justify-content:center;gap:8px;padding:10px;border-radius:12px;background:rgba(201,162,75,.1);border:1px dashed rgba(201,162,75,.4);font:700 13px Manrope;color:var(--gold)"><span class="ico tap-nudge" style="font-size:18px">'+(!state.checkin||!state.checkout?'ads_click':'check_circle')+'</span>'+(!state.checkin?T('1 · Toca tu día de LLEGADA','1 · Tap your CHECK-IN day'):!state.checkout?T('2 · Ahora toca tu día de SALIDA','2 · Now tap your CHECK-OUT day'):T('¡Fechas listas!','Dates ready!'))+'</div>'+
+        '<div id="cal" style="margin-top:14px;border:1px solid var(--line);border-radius:18px;padding:16px;background:var(--surface)"></div>'+
+        '<div id="nightsInfo" style="margin-top:14px;text-align:center;font:600 14px Manrope;color:var(--muted)"></div>';
+      renderCal();
+    }
+    function renderCal(){
+      const cal=$('#cal'); if(!cal) return;
+      const base=state.calMonth; const y=base.getFullYear(), m=base.getMonth();
+      const first=new Date(y,m,1), start=(first.getDay()+6)%7; const days=new Date(y,m+1,0).getDate();
+      const today=new Date(); today.setHours(0,0,0,0);
+      const dn= lang==='en'?['Mo','Tu','We','Th','Fr','Sa','Su']:['L','Ma','Mi','J','V','S','D'];
+      const mn= base.toLocaleDateString(lang==='en'?'en-US':'es-CO',{month:'long',year:'numeric'});
+      let h='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px"><button id="cPrev" class="ico" style="width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--text);cursor:pointer">chevron_left</button><span style="font:700 15px Manrope;color:var(--text);text-transform:capitalize">'+mn+'</span><button id="cNext" class="ico" style="width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--text);cursor:pointer">chevron_right</button></div>';
+      h+='<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:6px">'+dn.map(d=>'<div style="text-align:center;font:700 11px Manrope;color:var(--faint)">'+d+'</div>').join('')+'</div>';
+      h+='<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:3px">';
+      for(let i=0;i<start;i++) h+='<div></div>';
+      for(let d=1;d<=days;d++){
+        const date=new Date(y,m,d); date.setHours(0,0,0,0);
+        const past=date<today;
+        const isIn=state.checkin&&date.getTime()===state.checkin.getTime();
+        const isOut=state.checkout&&date.getTime()===state.checkout.getTime();
+        const inRange=state.checkin&&state.checkout&&date>state.checkin&&date<state.checkout;
+        let st='height:42px;border-radius:10px;display:grid;place-items:center;font:600 14px Manrope;';
+        if(past){ st+='color:var(--faint);text-decoration:line-through;opacity:.5;'; }
+        else if(isIn||isOut){ st+='background:linear-gradient(135deg,var(--gold-lite),var(--gold));color:#1a1405;cursor:pointer;font-weight:800;'; }
+        else if(inRange){ st+='background:rgba(201,162,75,.16);color:var(--text);cursor:pointer;'; }
+        else { st+='color:var(--text);cursor:pointer;'; }
+        h+='<div class="'+(past?'':'cday')+'" data-d="'+date.getTime()+'" style="'+st+'">'+d+'</div>';
+      }
+      h+='</div>';
+      cal.innerHTML=h;
+      $('#cPrev').addEventListener('click',()=>{ state.calMonth=new Date(y,m-1,1); renderCal(); });
+      $('#cNext').addEventListener('click',()=>{ state.calMonth=new Date(y,m+1,1); renderCal(); });
+      $$('.cday',cal).forEach(el=>el.addEventListener('click',()=>{
+        const t=new Date(parseInt(el.dataset.d));
+        if(!state.checkin||(state.checkin&&state.checkout)){ state.checkin=t; state.checkout=null; }
+        else if(t>state.checkin){ state.checkout=t; }
+        else { state.checkin=t; state.checkout=null; }
+        render();
+      }));
+      const ni=$('#nightsInfo'); if(ni) ni.textContent = nights()>0? nights()+T(' noche','  night')+(nights()>1?'s':''):'';
+    }
+
+    function renderAccommodation(){
+      wzBody.innerHTML=H(T('Paso 4 · Espacio','Step 4 · Space'),T('Elige tu acomodación','Choose your stay'),T('Selecciona el tipo y luego el espacio exacto donde vas a aparcar.','Pick the type, then the exact space to park.'))+'<div id="accList" style="margin-top:20px;display:flex;flex-direction:column;gap:14px"></div><div id="spotWrap" style="margin-top:22px"></div>';
+      const list=$('#accList');
+      accommodations.forEach(a=>{
+        const sel=state.acc&&state.acc.id===a.id;
+        const b=document.createElement('button');
+        b.style.cssText='display:flex;align-items:center;gap:15px;text-align:left;padding:15px;border-radius:22px;cursor:pointer;transition:all .2s cubic-bezier(.2,.8,.2,1);background:'+(sel?'linear-gradient(135deg,rgba(231,205,138,.14),rgba(201,162,75,.05))':'var(--surface)')+';border:1.5px solid '+(sel?'var(--gold)':'var(--line)')+';box-shadow:'+(sel?'0 0 0 2px var(--gold),0 16px 34px -14px rgba(201,162,75,.5)':'0 10px 26px -16px rgba(0,0,0,.75),inset 0 1px 0 rgba(255,255,255,.05)');
+        b.innerHTML=
+          '<div style="width:78px;height:78px;border-radius:16px;flex:none;background-image:url(\''+a.img+'\');background-size:cover;background-position:center;border:1px solid var(--line);box-shadow:0 6px 16px -8px rgba(0,0,0,.8)"></div>'+
+          '<div style="flex:1;min-width:0"><div style="font:700 18px Oswald,sans-serif;letter-spacing:.02em;color:var(--text)">'+(lang==='en'?a.en:a.name)+'</div><div style="font:500 13px Manrope;color:var(--muted);margin-top:3px">'+(lang==='en'?a.capEn:a.cap)+'</div></div>'+
+          '<div style="text-align:right;flex:none;white-space:nowrap"><div style="font-family:Oswald,sans-serif;font-weight:700;font-size:17px;color:var(--gold);white-space:nowrap">'+money(a.price)+'</div><div style="font:500 11px Manrope;color:var(--muted)">'+(lang==='en'?'/pers':'/pers')+'</div></div>'+
+          '<span class="ico" style="font-size:28px;flex:none;color:'+(sel?'var(--gold)':'var(--faint)')+'">'+(sel?'check_circle':'radio_button_unchecked')+'</span>';
+        b.addEventListener('click',()=>{ state.acc=a; state.spot=null; render(); });
+        list.appendChild(b);
+      });
+      renderSpotMap();
+    }
+    function renderSpotMap(){
+      const w=$('#spotWrap'); if(!w) return;
+      if(!state.acc){ w.innerHTML='<div style="text-align:center;color:var(--faint);font:500 13px Manrope;padding:8px">'+T('Elige un tipo para ver los espacios disponibles.','Pick a type to see available spaces.')+'</div>'; return; }
+      const occ={A2:1,B4:1,A5:1,B1:1};
+      let rows='';
+      ['A','B'].forEach(r=>{ let line='<div style="display:flex;gap:9px;justify-content:center">'; for(let i=1;i<=5;i++){ const id=r+i; const o=occ[id]; const sel=state.spot===id; line+='<button class="js-spot" data-id="'+id+'" '+(o?'disabled':'')+' style="width:56px;height:50px;border-radius:13px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;border:1.5px solid '+(o?'var(--line2)':'var(--gold)')+';background:'+(o?'var(--surface2)':sel?'linear-gradient(135deg,var(--gold-lite),var(--gold))':'rgba(201,162,75,.1)')+';color:'+(o?'var(--faint)':sel?'#1a1405':'var(--gold)')+';cursor:'+(o?'not-allowed':'pointer')+';transition:all .15s"><span class="ico" style="font-size:19px">'+(o?'block':'directions_car')+'</span><span style="font:800 9px Oswald,sans-serif">'+id+'</span></button>'; } line+='</div>'; rows+=line; });
+      w.innerHTML='<div style="font:700 12px Oswald,sans-serif;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;text-align:center;margin-bottom:10px">'+T('Elige tu espacio','Pick your space')+'</div>'+
+        '<div style="border-radius:20px;padding:20px 12px 16px;background:radial-gradient(120% 90% at 50% 0,var(--surface2),var(--surface));border:1px solid var(--line);box-shadow:inset 0 1px 0 rgba(255,255,255,.05)">'+
+          '<div style="margin:0 auto 16px;max-width:72%;height:26px;border-radius:0 0 60px 60px/0 0 26px 26px;background:linear-gradient(180deg,rgba(231,205,138,.9),rgba(201,162,75,.12));display:grid;place-items:center;box-shadow:0 0 34px rgba(201,162,75,.4)"><span style="font:700 10px Oswald,sans-serif;letter-spacing:.34em;color:#1a1405">'+T('ENTRADA','ENTRANCE')+'</span></div>'+
+          '<div style="display:flex;flex-direction:column;gap:9px">'+rows+'</div>'+
+          '<div style="display:flex;gap:16px;justify-content:center;margin-top:16px;padding-top:13px;border-top:1px solid var(--line2);font:600 11px Manrope;color:var(--muted)"><span>🚐 '+T('Libre','Free')+'</span><span style="color:var(--gold)">◉ '+T('Tuyo','Yours')+'</span><span>⛔ '+T('Ocupado','Taken')+'</span></div>'+
+        '</div>';
+      $$('.js-spot',w).forEach(b=>{ if(b.disabled) return; b.addEventListener('click',()=>{ state.spot=b.dataset.id; renderSpotMap(); updateFooter(); }); });
+    }
+
+    function renderExtras(){
+      wzBody.innerHTML=H(T('Paso 5 · Experiencias','Step 5 · Extras'),T('¿Quieres sumar algo?','Add extra experiences?'),T('Opcional. Toca lo que te interese y lo coordinamos a tu llegada.','Optional. Tap what interests you and we arrange it on arrival.'))+'<div id="exGrid" style="margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:12px"></div>';
+      const g=$('#exGrid');
+      extraOpts.forEach(o=>{
+        const sel=state.extras.includes(o.k);
+        const b=document.createElement('button');
+        b.style.cssText='display:flex;align-items:center;gap:12px;text-align:left;padding:15px;border-radius:16px;cursor:pointer;transition:all .18s;background:'+(sel?'linear-gradient(135deg,rgba(231,205,138,.16),rgba(201,162,75,.05))':'var(--surface)')+';border:1.5px solid '+(sel?'var(--gold)':'var(--line)')+';box-shadow:'+(sel?'0 0 0 2px var(--gold)':'0 8px 20px -14px rgba(0,0,0,.7)');
+        b.innerHTML='<span style="width:42px;height:42px;flex:none;border-radius:12px;display:grid;place-items:center;background:linear-gradient(145deg,rgba(231,205,138,.2),rgba(201,162,75,.05));border:1px solid var(--line)"><span class="ico" style="font-size:22px;color:var(--gold)">'+o.i+'</span></span><span style="flex:1;font:700 14px Manrope;color:var(--text)">'+T(o.es,o.en)+'</span><span class="ico" style="font-size:23px;color:'+(sel?'var(--gold)':'var(--faint)')+'">'+(sel?'check_circle':'add_circle')+'</span>';
+        b.addEventListener('click',()=>{ state.extras = sel? state.extras.filter(x=>x!==o.k) : [...state.extras,o.k]; render(); });
+        g.appendChild(b);
+      });
+    }
+    function renderContact(){
+      const z=state.acc; const n=nights();
+      const ccOpts=ccList.map(c=>'<option value="'+c[1]+'"'+(state.cc===c[1]?' selected':'')+'>'+c[0]+' '+c[1]+'</option>').join('');
+      wzBody.innerHTML=H(T('Paso 6 · Datos','Step 6 · Details'),T('Casi listo','Almost there'),T('Confirmamos disponibilidad por WhatsApp. $0 hoy.','We confirm availability via WhatsApp. $0 today.'))+
+        '<div style="margin-top:20px;display:flex;flex-direction:column;gap:12px">'+
+          '<input id="fName" placeholder="'+T('Tu nombre','Your name')+'" value="'+state.name.replace(/"/g,'&quot;')+'" style="width:100%;padding:15px 16px;border-radius:13px;border:1.5px solid var(--line);background:var(--surface);color:var(--text);font:600 15px Manrope;outline:none">'+
+          '<div style="display:flex;gap:10px"><select id="fCC" style="flex:none;width:104px;padding:0 8px;border-radius:13px;border:1.5px solid var(--line);background:var(--surface);color:var(--text);font:700 14px Manrope;outline:none;cursor:pointer">'+ccOpts+'</select><input id="fPhone" placeholder="'+T('WhatsApp (opcional)','WhatsApp (optional)')+'" value="'+state.phone.replace(/"/g,'&quot;')+'" style="flex:1;min-width:0;padding:15px 16px;border-radius:13px;border:1.5px solid var(--line);background:var(--surface);color:var(--text);font:600 15px Manrope;outline:none"></div>'+
+          '<input id="fEmail" type="email" placeholder="'+T('Correo electrónico (opcional)','Email (optional)')+'" value="'+state.email.replace(/"/g,'&quot;')+'" style="width:100%;padding:15px 16px;border-radius:13px;border:1.5px solid var(--line);background:var(--surface);color:var(--text);font:600 15px Manrope;outline:none">'+
+          '<textarea id="fNotes" placeholder="'+T('¿Algo que debamos saber? (opcional)','Anything we should know? (optional)')+'" rows="2" style="width:100%;padding:15px 16px;border-radius:13px;border:1.5px solid var(--line);background:var(--surface);color:var(--text);font:600 15px Manrope;outline:none;resize:vertical">'+state.notes+'</textarea>'+
+        '</div>'+
+        '<div style="margin-top:20px;padding:20px;border-radius:18px;background:var(--bg2);border:1px solid var(--line)">'+
+          '<div style="font:700 13px Manrope;letter-spacing:.08em;color:var(--gold);text-transform:uppercase;margin-bottom:14px">'+T('Resumen','Summary')+'</div>'+
+          sumRow(T('Acomodación','Stay'), z?((lang==='en'?z.en:z.name)+(state.spot?(' · '+state.spot):'')):'—')+
+          sumRow(T('Fechas','Dates'), fmtDate(state.checkin)+' → '+fmtDate(state.checkout))+
+          sumRow(T('Viajeros','Travelers'), state.guests+(state.pet?' · 🐾':''))+
+          (state.extras.length?sumRow(T('Experiencias','Extras'), state.extras.map(k=>{const o=extraOpts.find(x=>x.k===k);return o?(lang==='en'?o.en:o.es):k;}).join(', ')):'')+
+          sumRow(z&&n?(money(rate())+' × '+state.guests+T(' pers × ',' guests × ')+n+T(' noche',' night')+(n>1?'s':'')):T('Tarifa','Rate'), z&&n?money(total()):'—')+
+          (nights()>4?('<div style="display:flex;align-items:center;gap:7px;margin:2px 0 4px;font:700 12px Manrope;color:var(--sage)"><span class="ico" style="font-size:16px">local_offer</span>'+T('Descuento 4+ noches aplicado · $34.000/pers','4+ nights discount applied · $34,000/pers')+'</div>'):'')+
+          '<div style="height:1px;background:var(--line);margin:12px 0"></div>'+
+          '<div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:800 16px Manrope;color:var(--text)">'+T('Total','Total')+'</span><span style="font:800 22px Manrope;color:var(--gold)">'+(total()>0?money(total()):'—')+'</span></div>'+
+          '<div style="margin-top:8px;display:flex;align-items:center;gap:8px;font:700 12.5px Manrope;color:var(--sage)"><span class="ico" style="font-size:18px">payments</span>'+T('Pagas en EFECTIVO al llegar · $0 hoy · cancelación gratuita','Pay in CASH on arrival · $0 today · free cancellation')+'</div>'+
+        '</div>';
+      const nm=$('#fName'),ph=$('#fPhone'),nt=$('#fNotes'),em=$('#fEmail');
+      nm.addEventListener('input',e=>{ state.name=e.target.value; updateFooter(); });
+      ph.addEventListener('input',e=>{ state.phone=e.target.value; updateFooter(); });
+      em.addEventListener('input',e=>{ state.email=e.target.value; });
+      nt.addEventListener('input',e=>{ state.notes=e.target.value; });
+      const cc=$('#fCC'); if(cc) cc.addEventListener('change',e=>{ state.cc=e.target.value; });
+      [nm,ph,em,nt].forEach(i=>{ i.addEventListener('focus',()=>i.style.borderColor='var(--gold)'); i.addEventListener('blur',()=>i.style.borderColor='var(--line)'); });
+    }
+    const sumRow=(k,v)=>'<div style="display:flex;justify-content:space-between;gap:12px;padding:5px 0"><span style="font:500 14px Manrope;color:var(--muted)">'+k+'</span><span style="font:700 14px Manrope;color:var(--text);text-align:right">'+v+'</span></div>';
+
+    const tkCell=(k,v,c)=>'<div><div style="font:600 9px Oswald,sans-serif;letter-spacing:.14em;color:rgba(255,255,255,.45)">'+k+'</div><div style="font:600 14px Oswald,sans-serif;color:'+(c||'#fff')+'">'+v+'</div></div>';
+    function submit(){
+      const a=state.acc; const n=nights();
+      const vlabel={motorhome:'Motorhome',camper:'Camper/Van',trailer:'Trailer',tent:'Carpa'}[state.vehicle]||state.vehicle||'—';
+      const code='ISH-'+(2100+Math.floor(Math.random()*899))+'-'+Math.floor(100000+Math.random()*899999);
+      const folio='CRV-'+Math.floor(1000+Math.random()*8999)+'-'+(Math.floor(Math.random()*90)+10);
+      const gate=a?a.name.charAt(0).toUpperCase():'A';
+      const puesto=state.spot?state.spot:((a?a.id.slice(0,3).toUpperCase():'CRV')+'-'+(Math.floor(Math.random()*9)+1));
+      const DIV='━━━━━━━━━━━━━';
+      const msg=[
+        '✨ *Nueva reserva · Ishka Caravan*',
+        DIV,
+        '👤 '+(lang==='en'?'Name':'Nombre')+': '+state.name,
+        (state.phone? '📱 WhatsApp: '+state.cc+' '+state.phone : '📱 WhatsApp: '+(lang==='en'?'(via web)':'(por web)')),
+        (state.email? '✉️ Email: '+state.email : ''),
+        '🚐 '+(lang==='en'?'Vehicle':'Vehículo')+': '+vlabel,
+        '👥 '+(lang==='en'?'Travelers':'Viajeros')+': '+state.guests+(state.pet?' + mascota 🐾':''),
+        '🏕 '+(lang==='en'?'Stay':'Acomodación')+': '+(a?(lang==='en'?a.en:a.name):'—')+(state.spot?(' · '+(lang==='en'?'Spot':'Espacio')+' '+state.spot):''),
+        '📅 '+(lang==='en'?'Dates':'Fechas')+': '+fmtDate(state.checkin)+' → '+fmtDate(state.checkout)+' ('+n+(lang==='en'?' nights':' noches')+')',
+        (state.extras.length?('✨ '+(lang==='en'?'Extras':'Experiencias')+': '+state.extras.map(k=>{const o=extraOpts.find(x=>x.k===k);return o?(lang==='en'?o.en:o.es):k;}).join(', ')):''),
+        '💰 Total: '+money(total())+'  ('+money(rate())+' × '+state.guests+' × '+n+(nights()>4?(lang==='en'?' · 4+ off':' · desc. 4+'):'')+')',
+        '💵 '+(lang==='en'?'Payment: CASH on arrival at Ishka Center · $0 today':'Pago: EFECTIVO al llegar a Ishka Center · $0 hoy'),
+        '🎟 '+(lang==='en'?'Order':'Orden')+': '+code,
+        '📍 Cra. 129 #25-181, Pance, Cali',
+        state.notes?('📝 '+(lang==='en'?'Note':'Nota')+': '+state.notes):'',
+        DIV,
+        (lang==='en'?'🙌 I want to book my spot! Attaching my ticket 🎫':'🙌 ¡Quiero reservar mi lugar! Adjunto mi ticket 🎫')
+      ].filter(Boolean).join('\n');
+      const link=waLink(msg);
+      const QN=21, QD='#0a0a0b';
+      const qFinder=(r,c)=>{const rel=(br,bc)=>{const rr=r-br,cc=c-bc;if(rr===0||rr===6||cc===0||cc===6)return 1;if(rr>=2&&rr<=4&&cc>=2&&cc<=4)return 1;return 0;};if(r<7&&c<7)return rel(0,0);if(r<7&&c>=QN-7)return rel(0,QN-7);if(r>=QN-7&&c<7)return rel(QN-7,0);return -1;};
+      let qr='';
+      for(let r=0;r<QN;r++)for(let c=0;c<QN;c++){ let v=qFinder(r,c); if(v===-1){ const near=(r<8&&c<8)||(r<8&&c>QN-9)||(r>QN-9&&c<8); if(near) v=0; else if(r===6||c===6) v=(r+c)%2===0?1:0; else v=Math.random()>.52?1:0; } qr+='<span style="background:'+(v?QD:'#fff')+'"></span>'; }
+      let bars=''; for(let i=0;i<46;i++){ const w=1+Math.floor(Math.random()*3); bars+='<span style="flex:'+w+';height:100%;background:'+(Math.random()>.5?'rgba(255,255,255,.9)':'transparent')+'"></span>'; }
+      wzBody.innerHTML=
+        '<div style="text-align:center;margin-bottom:18px"><div style="width:70px;height:70px;margin:0 auto 12px;border-radius:50%;background:linear-gradient(145deg,#f4d97b,#a9822d);display:grid;place-items:center;animation:slideUp .5s;box-shadow:0 14px 40px rgba(230,193,90,.4)"><span class="ico" style="font-size:40px;color:#0a0a0b">check</span></div>'+
+        '<h3 style="font-family:Oswald,sans-serif;font-weight:700;font-size:28px;color:var(--text)">'+T('¡Tu entrada está lista!','Your ticket is ready!')+'</h3>'+
+        '<p style="margin-top:6px;color:var(--muted);font:500 14px Manrope">'+T('El pago se realiza en EFECTIVO al llegar a Ishka Center. Descarga tu ticket y adjúntalo en WhatsApp para confirmar.','Payment is in CASH on arrival at Ishka Center. Download your ticket and attach it on WhatsApp to confirm.')+'</p></div>'+
+        '<div id="ticketCard" style="max-width:420px;margin:0 auto;border-radius:22px;overflow:hidden;background:linear-gradient(180deg,#161310,#0c0c0e);border:1px solid rgba(230,193,90,.4);box-shadow:0 30px 70px rgba(0,0,0,.6);animation:slideUp .6s cubic-bezier(.2,.8,.2,1) both">'+
+          '<div style="position:relative;height:132px;background-image:linear-gradient(180deg,rgba(12,12,14,.2),rgba(12,12,14,.92)),url(\''+(a?a.img:'assets/van-tent-jungle.avif')+'\');background-size:cover;background-position:center">'+
+            '<div style="position:absolute;top:13px;left:15px;right:15px;display:flex;justify-content:space-between;align-items:flex-start">'+
+              '<div style="display:flex;align-items:center;gap:8px"><span style="width:26px;height:26px;border-radius:8px;background:linear-gradient(145deg,#f4d97b,#a9822d);display:grid;place-items:center;font:700 13px Oswald,sans-serif;color:#0a0a0b">I</span><span style="font:700 11px Oswald,sans-serif;letter-spacing:.14em;color:#fff">ISHKA CARAVAN</span></div>'+
+              '<span style="padding:5px 11px;border-radius:20px;background:rgba(230,193,90,.92);font:800 10px Oswald,sans-serif;letter-spacing:.12em;color:#0a0a0b">E-TICKET · 1/1</span></div>'+
+            '<div style="position:absolute;left:15px;bottom:11px"><div style="font:700 10px Oswald,sans-serif;letter-spacing:.2em;color:#f4d97b">'+T('APARCADERO ECO','ECO PARKING')+'</div><div style="font-family:Oswald,sans-serif;font-weight:700;font-size:24px;line-height:.95;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.7)">'+(a?(lang==='en'?a.en:a.name):'—')+'</div></div></div>'+
+          '<div style="padding:16px 18px 4px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:13px 10px">'+
+            tkCell(T('LLEGADA','CHECK-IN'),fmtDate(state.checkin))+tkCell(T('SALIDA','CHECK-OUT'),fmtDate(state.checkout))+tkCell(T('PUERTA','GATE'),gate,'#f4d97b')+
+            tkCell(T('LUGAR','VENUE'),'Ishka · Cali')+tkCell(T('NOCHES','NIGHTS'),String(n))+tkCell(T('PUESTO','SPOT'),puesto,'#f4d97b')+
+          '</div>'+
+          '<div style="position:relative;height:24px;margin:6px 0"><div style="position:absolute;top:50%;left:15px;right:15px;border-top:2px dashed rgba(255,255,255,.22)"></div><div style="position:absolute;top:50%;left:-12px;width:24px;height:24px;border-radius:50%;background:var(--surface);transform:translateY(-50%)"></div><div style="position:absolute;top:50%;right:-12px;width:24px;height:24px;border-radius:50%;background:var(--surface);transform:translateY(-50%)"></div></div>'+
+          '<div style="padding:4px 18px 16px;display:flex;gap:14px;align-items:center">'+
+            '<div style="flex:1;min-width:0">'+
+              '<div style="margin-bottom:8px"><div style="font:600 9px Oswald,sans-serif;letter-spacing:.14em;color:rgba(255,255,255,.45)">'+T('TITULAR','HOLDER')+'</div><div style="font:600 14px Oswald,sans-serif;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+(state.name||'—')+'</div></div>'+
+              '<div style="display:flex;gap:14px"><div><div style="font:600 9px Oswald,sans-serif;letter-spacing:.14em;color:rgba(255,255,255,.45)">'+T('ORDEN','ORDER')+'</div><div style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:#fff">'+code+'</div></div><div><div style="font:600 9px Oswald,sans-serif;letter-spacing:.14em;color:rgba(255,255,255,.45)">'+T('FOLIO','FOLIO')+'</div><div style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:#fff">'+folio+'</div></div></div>'+
+              '<div style="margin-top:8px;display:flex;align-items:center;gap:6px;font:700 10px Manrope;color:#7bd0b8">🔒 '+T('Pago verificado SSL','SSL verified')+'</div>'+
+            '</div>'+
+            '<div style="flex:none;text-align:center"><div style="width:104px;height:104px;padding:6px;background:#fff;border-radius:12px;display:grid;grid-template-columns:repeat(21,1fr);grid-template-rows:repeat(21,1fr);box-shadow:0 6px 18px rgba(0,0,0,.4)">'+qr+'</div><div style="font-family:\'JetBrains Mono\',monospace;font-size:8.5px;color:rgba(255,255,255,.5);margin-top:5px">'+T('Escanea para ingresar','Scan to enter')+'</div></div>'+
+          '</div>'+
+          '<div style="padding:11px 18px 15px;border-top:1px solid rgba(255,255,255,.07);background:rgba(0,0,0,.25)"><div style="display:flex;align-items:flex-end;gap:1px;height:34px;margin-bottom:6px">'+bars+'</div><div style="display:flex;justify-content:space-between;align-items:center"><span style="font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.12em;color:rgba(255,255,255,.55)">'+folio+' · '+puesto+'</span><span style="font:600 9px Oswald,sans-serif;letter-spacing:.1em;color:rgba(255,255,255,.4)">'+T('VÁLIDO · 1 INGRESO','VALID · 1 ENTRY')+'</span></div></div>'+
+        '</div>'+
+        '<div style="max-width:420px;margin:18px auto 0;display:flex;flex-direction:column;gap:10px">'+
+          '<a href="'+link+'" target="_blank" rel="noopener" style="width:100%;height:52px;border-radius:15px;background:#25d366;color:#fff;font:800 15px Oswald,sans-serif;letter-spacing:.03em;display:inline-flex;align-items:center;justify-content:center;gap:9px;text-decoration:none"><span style="width:22px;height:22px;display:inline-grid;place-items:center"><svg viewBox="0 0 32 32" width="22" height="22" fill="#fff" aria-hidden="true"><path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.1 7.9L.3 31.7l8-2.1c2.3 1.3 4.9 1.9 7.6 1.9h.1c8.6 0 15.6-7 15.6-15.6C31.6 7.4 24.6.4 16 .4zm0 28.6h-.1c-2.4 0-4.7-.6-6.7-1.9l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C3.6 20.9 3 18.5 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13-5.8 13-13 13zm7.1-9.7c-.4-.2-2.3-1.1-2.6-1.3-.4-.1-.6-.2-.9.2s-1 1.3-1.2 1.5c-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.7.2-.2.2-.4.4-.6.1-.3 0-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.7c-.2 0-.6.1-1 .5-.3.4-1.3 1.3-1.3 3.1s1.3 3.6 1.5 3.9c.2.2 2.6 4 6.3 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.2-.3-.3-.7-.4z"/></svg></span>'+T('Confirmar por WhatsApp','Confirm on WhatsApp')+'</a>'+
+          '<div style="display:flex;gap:10px">'+
+            '<button id="tkPdf" style="flex:1;height:50px;border-radius:14px;border:1px solid rgba(230,193,90,.5);background:linear-gradient(135deg,rgba(231,205,138,.16),rgba(201,162,75,.06));color:var(--gold);font:700 13.5px Oswald,sans-serif;letter-spacing:.03em;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:7px"><span class="ico" style="font-size:19px">download</span>'+T('Descargar ticket','Download ticket')+'</button>'+
+            '<button id="tkHome" style="flex:none;padding:0 20px;height:50px;border-radius:14px;border:1px solid var(--line);background:var(--surface);color:var(--text);font:700 13.5px Oswald,sans-serif;letter-spacing:.03em;cursor:pointer">'+T('Inicio','Home')+'</button>'+
+          '</div>'+
+        '</div>'+
+        '<p style="max-width:420px;margin:12px auto 0;text-align:center;font:500 11.5px Manrope;color:var(--muted)">'+T('Descarga tu ticket como PDF y adjúntalo en WhatsApp. Confirmaremos disponibilidad; el pago es en efectivo al llegar.','Download your ticket as PDF and attach it on WhatsApp. We\u2019ll confirm availability; payment is cash on arrival.')+'</p>';
+      const pdf=$('#tkPdf'); if(pdf) pdf.addEventListener('click',()=>{ window.print(); });
+      const hb=$('#tkHome'); if(hb) hb.addEventListener('click',closeWizard);
+      wzBar.style.width='100%'; wzStepLabel.textContent=T('Listo','Done'); wzBack.style.display='none'; wzNext.style.display='none'; wzSummary.textContent='';
+    }
+
+    document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeWizard(); legalModal.style.display='none'; lb.style.display='none'; } });
+
+    /* ---------- FEATURED SLIDER ---------- */
+    function initFeature(){
+      const track=$('#featTrack'), dotsW=$('#featDots'); if(!track||!dotsW) return;
+      const n=track.children.length; if(!n) return; let idx=0, timer;
+      dotsW.innerHTML=''; const dots=[];
+      for(let i=0;i<n;i++){ const b=document.createElement('button'); b.style.cssText='width:9px;height:9px;border-radius:999px;border:none;cursor:pointer;padding:0;background:rgba(255,255,255,.55);transition:all .3s'; b.addEventListener('click',()=>go(i,true)); dotsW.appendChild(b); dots.push(b); }
+      function go(i,manual){ idx=(i+n)%n; track.style.transform='translateX(-'+(idx*100)+'%)'; dots.forEach((d,k)=>{ d.style.background=k===idx?'#f4d97b':'rgba(255,255,255,.55)'; d.style.width=k===idx?'22px':'9px'; }); if(manual){ clearInterval(timer); timer=setInterval(()=>go(idx+1),4200); } }
+      go(0); timer=setInterval(()=>go(idx+1),4200);
+    }
+
+    /* ---------- INIT ---------- */
+    applyLang(); // renders amenities/reviews/faq/map + translates
+    initFeature();
+  }
+}
+</script>
+</body>
+</html>
